@@ -1,4 +1,7 @@
 /**
+ * Calculator which can add, subtract, multiply, or divide any  decimal numbers. 
+ * The program also displays the execution time since the program runnings until the user types "q" or "Q".
+ * 
 * Author: Kittisak Priabying
 * ID: 623040130-1
 * Sec: 1
@@ -17,9 +20,14 @@ public class Calculator {
             System.out.println("Quitting the program");
             System.exit(1);
 
+        }else if (args.length != 3 ) {
+            System.err.println("Calculator <num_1> <num_2>");
+            System.exit(1);   
+
         }else if (args[0].equals("/") && args[2].equals(("0"))) {
             System.out.println("The second operand cannot be zero");
             System.exit(1);
+        
         }
 
         String aon = args[0];
@@ -43,6 +51,9 @@ public class Calculator {
         }else if (aon.equals("/")) {
             result = num_3 / num_4 ;
              
+        }else {
+            System.err.println("Unknow Operater");
+            System.exit(1);
         }
 
         System.out.println(num_3 + " " + aon +" "+ num_4 + " = " + df.format(result) );

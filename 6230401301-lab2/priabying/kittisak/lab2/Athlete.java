@@ -14,7 +14,10 @@
 package priabying.kittisak.lab2;
 public class Athlete {
     public static void main(String[] args) {
-        
+        if (args.length != 3) {
+            System.err.println("<athlete_name> <sport_name> <athletl_nationality>");
+            System.exit(1);
+        }
         String athleteName = args[0];
         String sportName = args[1];
         String athleteNationality = args[2];

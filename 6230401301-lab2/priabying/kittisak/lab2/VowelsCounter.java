@@ -1,4 +1,6 @@
 /**
+ * Program to count the number of vowels in English.
+ * 
 * Author: Kittisak Priabying
 * ID: 623040130-1
 * Sec: 1
