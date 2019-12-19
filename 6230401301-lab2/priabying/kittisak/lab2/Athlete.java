@@ -4,10 +4,10 @@
 *  favorite athlete is <athlete_name> who plays <sport_name> and has 
 * nationality as <athlete_nationality>"  
 *
-* Author: Manee Jaidee
-* ID: 623040123-4
+* Author: Kittisak Priabying
+* ID: 623040130-1
 * Sec: 1
-* Date: December 12, 2019
+* Date: December 15, 2019
 *
 **/
 
