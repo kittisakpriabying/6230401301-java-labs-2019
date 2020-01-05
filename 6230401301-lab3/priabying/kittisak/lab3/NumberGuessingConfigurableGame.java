@@ -39,7 +39,6 @@ public class NumberGuessingConfigurableGame {
         min = num1;
         max = num2;
         numTries = num3;
-        input.close();
 
     }
 
