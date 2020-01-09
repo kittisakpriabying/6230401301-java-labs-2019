@@ -14,7 +14,7 @@ public class PersonV2 extends Person {
     private LocalDate dob;
 
     public PersonV2(String name, double height, double weight, String newDob) {
-        super(name, height, weight);
+        super(name, height, weight); // variables in class Person.
         this.dob = LocalDate.parse(newDob);
     }
 
@@ -61,30 +61,31 @@ public class PersonV2 extends Person {
         System.out.println(this.getName() + " is " + distanceYear + " years " + distanceMonth + " months and "
                 + distanceDay + " days old.");
     }
-    //method called compareAge
+
+    // method called compareAge
     public void compareAge(PersonV2 another) {
         LocalDate myBirthDay = this.dob;
         LocalDate yourBirthDay = another.getDob();
 
-        Period distanceAge = Period.between(yourBirthDay, myBirthDay);  
-        //Convert value to a positive integer.
-        int distanceDay = Math.abs(distanceAge.getDays()) ;  //Days
-        int distanceMonth = Math.abs(distanceAge.getMonths()); //Months
-        int distanceYear = Math.abs(distanceAge.getYears()); //Years
-        
-        //compare yourBirthDay and myBirthDay 
-        if (yourBirthDay.isAfter(myBirthDay)) { ////youBirthDay is after myBirthDay. 
-            
-            System.out.println(this.getName() + " is " + distanceYear + " years " + distanceMonth
-                    + " months and " + distanceDay + " day older than " + another.getName());
+        Period distanceAge = Period.between(yourBirthDay, myBirthDay);
+        // Convert value to a positive integer.
+        int distanceDay = Math.abs(distanceAge.getDays()); // Days
+        int distanceMonth = Math.abs(distanceAge.getMonths()); // Months
+        int distanceYear = Math.abs(distanceAge.getYears()); // Years
+
+        // compare yourBirthDay and myBirthDay
+        if (yourBirthDay.isAfter(myBirthDay)) { //// youBirthDay is after myBirthDay.
+
+            System.out.println(this.getName() + " is " + distanceYear + " years " + distanceMonth + " months and "
+                    + distanceDay + " day older than " + another.getName());
         }
-        //youBirthDay is before myBirthDay. 
+        // youBirthDay is before myBirthDay.
         if (yourBirthDay.isBefore(myBirthDay)) {
 
-            System.out.println(another.getName() + " is " + distanceYear + " years " + distanceMonth
-                    + " months and " + distanceDay + " day older than " + this.getName());
+            System.out.println(another.getName() + " is " + distanceYear + " years " + distanceMonth + " months and "
+                    + distanceDay + " day older than " + this.getName());
         }
-        //youBirthDay is equal myBirthDay. 
+        // youBirthDay is equal myBirthDay.
         if (yourBirthDay.isEqual(myBirthDay)) {
             System.out.println(this.getName() + " and " + another.getName() + " are the same age.");
 
@@ -94,7 +95,7 @@ public class PersonV2 extends Person {
 
     @Override
     public String toString() {
-        return super.toString() + ", Birthday = " + this.dob; //Add Birthday to output.
+        return super.toString() + ", Birthday = " + this.dob; // Add Birthday to output.
     }
 
 }

@@ -1,8 +1,15 @@
+/**
+ * 
+ * TestPersonV2
+ * 
+ * 
+* Author: Kittisak Priabying
+* ID: 623040130-1
+* Sec: 1
+* Date: January 06, 2020
+ */
 package priabying.kittisak.lab4;
 
-/**
- * TestPersonV2
- */
 public class TestPersonV2 {
 
     public static void main(String[] args) {
