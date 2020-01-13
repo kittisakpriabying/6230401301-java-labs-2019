@@ -3,7 +3,7 @@
 * ID: 623040130-1
 * Sec: 1
 * Date: January 06, 2020
- */
+*/
 
 package priabying.kittisak.lab4;
 
