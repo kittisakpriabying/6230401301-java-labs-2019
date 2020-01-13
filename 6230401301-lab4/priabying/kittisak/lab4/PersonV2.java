@@ -52,7 +52,7 @@ public class PersonV2 extends Person {
 
     // method called howOld
     public void howOld() {
-        Period distance = Period.between(this.dob, LocalDate.now().minusDays(1)); //
+        Period distance = Period.between(this.dob, LocalDate.now()); 
 
         int distanceDay = distance.getDays();
         int distanceMonth = distance.getMonths();
@@ -74,7 +74,7 @@ public class PersonV2 extends Person {
         int distanceYear = Math.abs(distanceAge.getYears()); // Years
 
         // compare yourBirthDay and myBirthDay
-        if (yourBirthDay.isAfter(myBirthDay)) { //// youBirthDay is after myBirthDay.
+        if (yourBirthDay.isAfter(myBirthDay)) { // youBirthDay is after myBirthDay.
 
             System.out.println(this.getName() + " is " + distanceYear + " years " + distanceMonth + " months and "
                     + distanceDay + " day older than " + another.getName());
