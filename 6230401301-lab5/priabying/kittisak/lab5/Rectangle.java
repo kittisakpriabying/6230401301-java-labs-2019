@@ -1,12 +1,20 @@
+/**
+* Author: Kittisak Priabying
+* ID: 623040130-1
+* Sec: 1
+* Date: January 13, 2020
+**/
 package priabying.kittisak.lab5;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Rectangle extends Shape {
+    // variables
     protected double width;
     protected double lenght;
 
+    // Constructor no parameter.
     public Rectangle() {
         super();
         this.lenght = 2.0;
@@ -14,6 +22,7 @@ public class Rectangle extends Shape {
 
     }
 
+    // Constructor 2 parameter(width, lenght).
     public Rectangle(double width, double lenght) {
         super();
         this.lenght = lenght;
@@ -21,6 +30,7 @@ public class Rectangle extends Shape {
 
     }
 
+    // Constructor 4 parameter(width, lenght, color, filled).
     public Rectangle(double width, double lenght, String color, boolean filled) {
         super(color, filled);
         this.width = width;
@@ -28,18 +38,22 @@ public class Rectangle extends Shape {
 
     }
 
+    // setter for width.
     public void setWidth(double width) {
         this.width = width;
     }
 
+    // getter for width.
     public double getWidth() {
         return width;
     }
 
+    // setter for lenght.
     public void setLenght(double lenght) {
-        this.width = lenght;
+        this.lenght = lenght;
     }
 
+    // getter for lenght.
     public double getLenght() {
         return lenght;
     }
@@ -57,6 +71,7 @@ public class Rectangle extends Shape {
 
     @Override
     public double getPerimeter() {
+        // calculate perimeter.
         double perimeter = 2 * (this.lenght + this.width);
 
         BigDecimal bd = BigDecimal.valueOf(perimeter);

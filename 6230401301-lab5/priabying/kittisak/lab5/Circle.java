@@ -55,6 +55,7 @@ public class Circle extends Shape {
 
     @Override
     public double getPerimeter() {
+        // calculate perimeter
         double perimeter = 2 * Math.PI * this.radius;
 
         BigDecimal bd = BigDecimal.valueOf(perimeter);
@@ -64,6 +65,7 @@ public class Circle extends Shape {
 
     @Override
     public String toString() {
+        // output add radius
         return super.toString() + ", radius:" + this.radius;
     }
 
