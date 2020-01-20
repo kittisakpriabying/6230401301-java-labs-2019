@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 public class PersonFormV1 extends MySimpleWindow {
-    // Quick fix warning: Java(536871008) ~ Searched from Google.
+   
     private static final long serialVersionUID = 3116509230184477773L;
 
     // Constant variables.
