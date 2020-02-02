@@ -66,7 +66,7 @@ public class PersonFormV1 extends MySimpleWindow {
         GridBagConstraints gc = new GridBagConstraints();
         this.v1Panel = new JPanel(new GridBagLayout());
 
-        gc.insets = new Insets(5, 5, 5, 5);
+        gc.insets = new Insets(3, 3, 3, 3);
         gc.fill = GridBagConstraints.HORIZONTAL;
         gc.weightx = 1;
         gc.weighty = 1;

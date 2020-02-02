@@ -14,12 +14,11 @@ public class MySimpleWindow extends JFrame {
     protected JPanel mainPanel;
     protected JPanel endLayout;
     protected JPanel buttonPanel;
-    protected JPanel startLayout;
     protected JPanel centerLayout;
     protected JButton okButton;
     protected JButton cancelButton;
 
-    // constructor
+    // constructor no paramter.
     public MySimpleWindow() {
         super();
     }
@@ -29,14 +28,13 @@ public class MySimpleWindow extends JFrame {
 
     }
 
+    // constructor one paramter. (String)
     protected void addComponents() {
 
         // Create panel
         this.mainPanel = new JPanel(new BorderLayout());
         this.buttonPanel = new JPanel();
-        // SetLayout to Start.
-        this.startLayout = new JPanel();
-        this.startLayout.setLayout(new BoxLayout(this.startLayout, BoxLayout.Y_AXIS));
+        
         // SetLayout to Center.
         this.centerLayout = new JPanel();
         this.centerLayout.setLayout(new BoxLayout(this.centerLayout, BoxLayout.Y_AXIS));
@@ -55,7 +53,6 @@ public class MySimpleWindow extends JFrame {
         this.endLayout.add(this.buttonPanel);
 
         // Add startLayout to mainPanel.
-        this.mainPanel.add(this.startLayout, BorderLayout.PAGE_START); // START
         this.mainPanel.add(this.centerLayout, BorderLayout.CENTER); // CENTER
         this.mainPanel.add(this.endLayout, BorderLayout.PAGE_END); // END
 
