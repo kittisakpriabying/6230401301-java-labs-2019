@@ -1,14 +1,18 @@
 package priabying.kittisak.lab6;
 
-import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import java.awt.*;
 
 public class PersonFormV2 extends PersonFormV1 {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     protected JLabel sportsLabel;
     protected JLabel notLabel;
     protected JPanel notePanel;
@@ -16,6 +20,7 @@ public class PersonFormV2 extends PersonFormV1 {
     protected JComboBox<String> sportsComboBox;
     protected JPanel v2Panel;
     protected JPanel endLayout;
+    protected JScrollPane noteScrollPane;
 
     public PersonFormV2() {
         super();
@@ -28,42 +33,60 @@ public class PersonFormV2 extends PersonFormV1 {
     @Override
     protected void addComponents() {
         super.addComponents();
-        this.sportsLabel = new JLabel("Sports:");
-        this.notLabel = new JLabel("Note:");
+
+        // Create Label.
+        this.sportsLabel = new JLabel("Sports:"); // Sports.
+        this.notLabel = new JLabel("Note:"); // Note.
+
+        // Create ComboBox.
         this.sportsComboBox = new JComboBox<String>();
+        // Add Item to ComboBox.
         sportsComboBox.addItem("Running");
         sportsComboBox.addItem("Swimming");
         sportsComboBox.addItem("Tennis");
 
-        this.notTextArea = new JTextArea("",3, 35);
+        // Create Panel and GridBagLaout.
+        this.notePanel = new JPanel(new GridBagLayout());
+
+        // Create TextArea 3 rows and 35 columns.
+        this.notTextArea = new JTextArea(2, 35);
+
+        // Create ScrollPane.
+        this.noteScrollPane = new JScrollPane(this.notTextArea);
+
+        this.notTextArea.setLineWrap(true);
+        this.notTextArea.setWrapStyleWord(true);
+
+        // Set Layout.
         GridBagConstraints gc = new GridBagConstraints();
-        this.v2Panel = new JPanel(new GridBagLayout());
 
-        gc.insets = new Insets(3, 3, 3, 3);
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.weightx = 1;
-        gc.weighty = 1;
+        // Continuing from PersonFormV1.
+        gc.gridy = 5;
         gc.gridx = 0;
-        gc.gridy = 0;
-        v2Panel.add(this.sportsLabel, gc);
+        gc.anchor = GridBagConstraints.WEST;
+        this.v1Panel.add(this.sportsLabel, gc);
 
-        
+        gc.gridy = 5;
         gc.gridx = 1;
+        gc.anchor = GridBagConstraints.EAST;
+        this.v1Panel.add(this.sportsComboBox, gc);
+
+        // Set Layout notePanel.
+        gc.weighty = 1.0;
+        gc.weightx = 1.0;
+        gc.insets = new Insets(5, 5, 5, 5);
+        gc.fill = GridBagConstraints.HORIZONTAL;
+
         gc.gridy = 0;
-        v2Panel.add(this.sportsComboBox, gc);
-
         gc.gridx = 0;
+        gc.anchor = GridBagConstraints.WEST;
+        this.notePanel.add(this.notLabel, gc);
         gc.gridy = 1;
-        v2Panel.add(this.notLabel, gc);
-
         gc.gridx = 0;
-        gc.gridy = 2;
-        v2Panel.add(this.notTextArea, gc);
+        this.notePanel.add(this.noteScrollPane, gc);
 
-        this.centerLayout.add(this.v2Panel);
-        
-      
-        
+        // Add notePanel to endLayout from MySimpleWindow class.
+        this.endLayout.add(this.notePanel);
 
     }
 

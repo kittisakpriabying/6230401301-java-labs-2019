@@ -5,7 +5,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import java.awt.*;
 
@@ -17,7 +16,6 @@ public class PersonFormV1 extends MySimpleWindow {
     protected JRadioButton studentButton, teacheButton;
     protected ButtonGroup group;
     protected JPanel v1Panel, typeGroup;
-    protected JPanel centerLayout;
 
     // constructor no paramter.
     public PersonFormV1() {
@@ -33,113 +31,100 @@ public class PersonFormV1 extends MySimpleWindow {
 
     @Override
     protected void addComponents() {
-        // 
+
         super.addComponents();
-        
-        this.nameLabel = new JLabel("Name:");
-        this.nameTextField = new JTextField(15);
+        // Create Label.
+        this.nameLabel = new JLabel("Name:"); // Name
+        this.heigheLabel = new JLabel("Height (cm.):"); // Height
+        this.weightLabel = new JLabel("Weight (kg.):"); // Eeight
+        this.birthLabel = new JLabel("Date of birth (eg.,31-01-1990):"); // Birth Day
+        this.typeLabel = new JLabel("Type:"); // Type
 
-        this.heigheLabel = new JLabel("Height (cm.):");
-        this.heighTextField = new JTextField(15);
-        this.heigheLabel.setLocation(1, 2);
+        // Create TextField.
+        this.heighTextField = new JTextField(15); // Height
+        this.nameTextField = new JTextField(15); // Name
+        this.weighTextField = new JTextField(15); // Weight
+        this.birthTextField = new JTextField(15); // Birth day
 
-        this.weightLabel = new JLabel("Weight (kg.):");
-        this.weighTextField = new JTextField(15);
-
-        this.birthLabel = new JLabel("Date of birth (eg.,31-01-1990):");
-        this.birthTextField = new JTextField(15);
-
-        this.typeLabel = new JLabel("Type:");
-        this.group = new ButtonGroup();
+        // Create RadioButton
         this.studentButton = new JRadioButton("Student", false);
         this.teacheButton = new JRadioButton("Teacher", false);
+
+        // Set group type.
+        this.group = new ButtonGroup();
+        // Add studentButton and teacherButton to group.
         this.group.add(this.studentButton);
         this.group.add(this.teacheButton);
 
+        // Create Panel for typeGroup.
         this.typeGroup = new JPanel();
+        // Add studentButton and teacherButton to panel typeGroup.
         typeGroup.add(this.studentButton);
         typeGroup.add(this.teacheButton);
 
+        // Set Layout
         GridBagConstraints gc = new GridBagConstraints();
         this.v1Panel = new JPanel(new GridBagLayout());
 
-        gc.insets = new Insets(3, 3, 3, 3);
+        gc.insets = new Insets(5, 5, 5, 5);
         gc.fill = GridBagConstraints.HORIZONTAL;
         gc.weightx = 1;
         gc.weighty = 1;
+
+        // Name (0,0).
         gc.gridx = 0;
         gc.gridy = 0;
-        v1Panel.add(this.nameLabel, gc);
+        gc.anchor = GridBagConstraints.WEST;
+        v1Panel.add(this.nameLabel, gc); //Add nameLabel to v1Panel.
 
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.weightx = 1;
-        gc.weighty = 1;
+        // nameTextField (1,0).
         gc.gridx = 1;
         gc.gridy = 0;
+        gc.anchor = GridBagConstraints.EAST;
         v1Panel.add(this.nameTextField, gc);
 
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.weightx = 1;
-        gc.weighty = 1;
         gc.gridx = 0;
         gc.gridy = 1;
+        gc.anchor = GridBagConstraints.WEST;
         v1Panel.add(this.heigheLabel, gc);
 
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.weightx = 1;
-        gc.weighty = 1;
         gc.gridx = 1;
         gc.gridy = 1;
+        gc.anchor = GridBagConstraints.EAST;
         v1Panel.add(this.heighTextField, gc);
 
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.weightx = 1;
-        gc.weighty = 1;
         gc.gridx = 0;
         gc.gridy = 2;
+        gc.anchor = GridBagConstraints.WEST;
         v1Panel.add(this.weightLabel, gc);
 
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.weightx = 1;
-        gc.weighty = 1;
         gc.gridx = 1;
         gc.gridy = 2;
+        gc.anchor = GridBagConstraints.EAST;
         v1Panel.add(this.weighTextField, gc);
 
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.weightx = 1;
-        gc.weighty = 1;
         gc.gridx = 0;
         gc.gridy = 3;
+        gc.anchor = GridBagConstraints.WEST;
         v1Panel.add(this.birthLabel, gc);
 
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.weightx = 1;
-        gc.weighty = 1;
         gc.gridx = 1;
         gc.gridy = 3;
+        gc.anchor = GridBagConstraints.EAST;
         v1Panel.add(this.birthTextField, gc);
 
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.weightx = 1;
-        gc.weighty = 1;
         gc.gridx = 0;
         gc.gridy = 4;
+        gc.anchor = GridBagConstraints.WEST;
         v1Panel.add(this.typeLabel, gc);
 
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.weightx = 1;
-        gc.weighty = 1;
         gc.gridx = 1;
         gc.gridy = 4;
+        gc.anchor = GridBagConstraints.EAST;
         v1Panel.add(this.typeGroup, gc);
 
-        this.centerLayout = new JPanel();
-
-        centerLayout.setLayout(new BoxLayout(centerLayout, BoxLayout.PAGE_AXIS));
+        // Add v1Panel to centerLaout from MySimpleWindow class.
         this.centerLayout.add(this.v1Panel);
-        this.add(this.centerLayout);
-        this.add(BorderLayout.CENTER, this.centerLayout);
 
     }
 
