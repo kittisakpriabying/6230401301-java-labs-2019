@@ -42,7 +42,7 @@ public class MySimpleWindow extends JFrame {
         // Create panel
         this.mainPanel = new JPanel(new BorderLayout());
         this.buttonPanel = new JPanel();
-        
+
         // SetLayout to Center.
         this.centerLayout = new JPanel();
         this.centerLayout.setLayout(new BoxLayout(this.centerLayout, BoxLayout.Y_AXIS));

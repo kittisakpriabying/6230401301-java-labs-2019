@@ -1,3 +1,11 @@
+/**
+*
+* Author: kittisak Priabying.
+* ID: 623040130-1
+* Sec: 1
+* Date: Feb 3, 2019
+*
+**/
 package priabying.kittisak.lab6;
 
 import javax.swing.ImageIcon;
