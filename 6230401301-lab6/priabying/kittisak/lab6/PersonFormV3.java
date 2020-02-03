@@ -20,7 +20,7 @@ public class PersonFormV3 extends PersonFormV2 {
 
     private static final long serialVersionUID = 1L;
     protected JLabel hobbiesLabel;
-    protected JList hobbiesList;
+    protected JList<String> hobbiesList;
     protected JMenuBar menuBar;
     protected JMenu fileMenu;
     protected JMenu configMenu;
@@ -96,13 +96,13 @@ public class PersonFormV3 extends PersonFormV2 {
         gc.fill = GridBagConstraints.HORIZONTAL;
        
         // (0,7)
-        gc.gridy = 7;
+        gc.gridy = 6;
         gc.gridx = 0;
         gc.anchor = GridBagConstraints.WEST;
         this.v1Panel.add(this.hobbiesLabel, gc);
        
         //(1,7)
-        gc.gridy = 7;
+        gc.gridy = 6;
         gc.gridx = 1;
         gc.anchor = GridBagConstraints.WEST;
         this.v1Panel.add(this.hobbiesList, gc);
@@ -110,7 +110,6 @@ public class PersonFormV3 extends PersonFormV2 {
     }
 
     public static void createAndShowGUI() {
-
         PersonFormV3 personFormV3 = new PersonFormV3("Person form V3");
         personFormV3.addComponents();
         personFormV3.addMenus();
