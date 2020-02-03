@@ -38,9 +38,9 @@ public class PersonFormV1 extends MySimpleWindow {
     }
 
     @Override
-    protected void addComponents() {
-
-        super.addComponents();
+    protected void initComponents() {
+        
+        super.initComponents();
         // Create Label.
         this.nameLabel = new JLabel("Name:"); // Name
         this.heigheLabel = new JLabel("Height (cm.):"); // Height
@@ -60,6 +60,13 @@ public class PersonFormV1 extends MySimpleWindow {
 
         // Set group type.
         this.group = new ButtonGroup();
+
+    }
+
+    @Override
+    protected void addComponents() {
+
+        
         // Add studentButton and teacherButton to group.
         this.group.add(this.studentButton);
         this.group.add(this.teacheButton);
@@ -83,7 +90,7 @@ public class PersonFormV1 extends MySimpleWindow {
         gc.gridx = 0;
         gc.gridy = 0;
         gc.anchor = GridBagConstraints.WEST;
-        v1Panel.add(this.nameLabel, gc); //Add nameLabel to v1Panel.
+        v1Panel.add(this.nameLabel, gc); // Add nameLabel to v1Panel.
 
         // nameTextField (1,0).
         gc.gridx = 1;
@@ -134,10 +141,13 @@ public class PersonFormV1 extends MySimpleWindow {
         // Add v1Panel to centerLaout from MySimpleWindow class.
         this.centerLayout.add(this.v1Panel);
 
+        super.addComponents();
+
     }
 
     public static void createAndShowGUI() {
         PersonFormV1 personFormV1 = new PersonFormV1("Person form V1");
+        personFormV1.initComponents();;
         personFormV1.addComponents();
         personFormV1.setFrameFeatures();
     }

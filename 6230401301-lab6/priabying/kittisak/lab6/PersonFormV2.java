@@ -37,18 +37,15 @@ public class PersonFormV2 extends PersonFormV1 {
     }
 
     @Override
-    protected void addComponents() {
-        super.addComponents();
+    protected void initComponents() {
+        super.initComponents();
+
         // Create Label.
         this.sportsLabel = new JLabel("Sports:"); // Sports.
         this.noteLabel = new JLabel("Note:"); // Note.
 
         // Create ComboBox.
         this.sportsComboBox = new JComboBox<String>();
-        // Add Item to ComboBox.
-        sportsComboBox.addItem("Running");
-        sportsComboBox.addItem("Swimming");
-        sportsComboBox.addItem("Tennis");
 
         // Create Panel and GridBagLaout.
         this.notePanel = new JPanel(new GridBagLayout());
@@ -62,6 +59,17 @@ public class PersonFormV2 extends PersonFormV1 {
 
         this.noteTextArea.setLineWrap(true);
         this.noteTextArea.setWrapStyleWord(true);
+
+    }
+
+    @Override
+    protected void addComponents() {
+        super.addComponents();
+
+        // Add Item to ComboBox.
+        sportsComboBox.addItem("Running");
+        sportsComboBox.addItem("Swimming");
+        sportsComboBox.addItem("Tennis");
 
         // Create GridBagConstraints.
         GridBagConstraints gc = new GridBagConstraints();
@@ -97,9 +105,10 @@ public class PersonFormV2 extends PersonFormV1 {
     }
 
     public static void createAndShowGUI() {
-        PersonFormV2 personForm2 = new PersonFormV2("Person Form V2");
-        personForm2.addComponents();
-        personForm2.setFrameFeatures();
+        PersonFormV2 personFormV2 = new PersonFormV2("Person Form V2");
+        personFormV2.initComponents();
+        personFormV2.addComponents();
+        personFormV2.setFrameFeatures();
     }
 
     public static void main(String[] args) {

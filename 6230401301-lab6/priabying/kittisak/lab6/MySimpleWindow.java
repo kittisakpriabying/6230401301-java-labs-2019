@@ -7,14 +7,12 @@
 *
 **/
 package priabying.kittisak.lab6;
-
-import java.awt.BorderLayout;
-
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.BoxLayout;
 
 public class MySimpleWindow extends JFrame {
 
@@ -31,13 +29,13 @@ public class MySimpleWindow extends JFrame {
         super();
     }
 
+    // constructor one paramter. (String)
     public MySimpleWindow(String namePanel) {
         super(namePanel);
 
     }
 
-    // constructor one paramter. (String)
-    protected void addComponents() {
+    protected void initComponents() {
 
         // Create panel
         this.mainPanel = new JPanel(new BorderLayout());
@@ -52,6 +50,9 @@ public class MySimpleWindow extends JFrame {
         // Create button "ok" and "cancel".
         this.okButton = new JButton("ok");
         this.cancelButton = new JButton("cancel");
+    }
+
+    protected void addComponents() {
 
         // Add button to buttonPanel.
         buttonPanel.add(okButton);
@@ -79,6 +80,7 @@ public class MySimpleWindow extends JFrame {
 
     public static void createAndShowGUI() {
         MySimpleWindow msw = new MySimpleWindow("My Simple Window");
+        msw.initComponents();
         msw.addComponents();
         msw.setFrameFeatures();
     }

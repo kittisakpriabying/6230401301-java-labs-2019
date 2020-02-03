@@ -41,7 +41,16 @@ public class PersonFormV3 extends PersonFormV2 {
         super(nameFrame);
     }
 
-    protected void addMenus() {
+    @Override
+    protected void initComponents() {
+        super.initComponents();
+
+        // Create Label .
+        this.hobbiesLabel = new JLabel("Hobbies:");
+
+        // Create List .
+        String[] myList = { "Reading", "Traveling", "Cooking", "Photography" };
+        this.hobbiesList = new JList<String>(myList);
 
         // Create menubar.
         this.menuBar = new JMenuBar();
@@ -57,6 +66,10 @@ public class PersonFormV3 extends PersonFormV2 {
         this.exitItem = new JMenuItem("Exit");
         this.colorItem = new JMenuItem("Color");
         this.sizeItem = new JMenuItem("Size");
+
+    }
+
+    protected void addMenus() {
 
         // Add Item to fileMunu.
         this.fileMenu.add(this.newItem);
@@ -81,27 +94,20 @@ public class PersonFormV3 extends PersonFormV2 {
 
         super.addComponents();
 
-        // Create Label .
-        this.hobbiesLabel = new JLabel("Hobbies:");
-        
-        // Create List .
-        String[] myList = { "Reading", "Traveling", "Cooking", "Photography" };
-        this.hobbiesList = new JList<String>(myList);
-
         // Continuing from PersonFormV1.
         GridBagConstraints gc = new GridBagConstraints();
         gc.weightx = 1.0;
         gc.weighty = 1.0;
         gc.insets = new Insets(3, 3, 3, 3);
         gc.fill = GridBagConstraints.HORIZONTAL;
-       
+
         // (0,7)
         gc.gridy = 6;
         gc.gridx = 0;
         gc.anchor = GridBagConstraints.WEST;
         this.v1Panel.add(this.hobbiesLabel, gc);
-       
-        //(1,7)
+
+        // (1,7)
         gc.gridy = 6;
         gc.gridx = 1;
         gc.anchor = GridBagConstraints.WEST;
@@ -111,6 +117,7 @@ public class PersonFormV3 extends PersonFormV2 {
 
     public static void createAndShowGUI() {
         PersonFormV3 personFormV3 = new PersonFormV3("Person form V3");
+        personFormV3.initComponents();
         personFormV3.addComponents();
         personFormV3.addMenus();
         personFormV3.setFrameFeatures();

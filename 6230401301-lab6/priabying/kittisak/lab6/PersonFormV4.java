@@ -8,9 +8,9 @@
 **/
 package priabying.kittisak.lab6;
 
+import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
 
 public class PersonFormV4 extends PersonFormV3 {
@@ -34,12 +34,9 @@ public class PersonFormV4 extends PersonFormV3 {
         super(nameFrame);
     }
 
-    private void addSubMenus() {
-
-        // remove colorItem and sizeItem in configMenu.
-        this.configMenu.remove(this.colorItem);
-        this.configMenu.remove(this.sizeItem);
-
+    @Override
+    protected void initComponents() {
+        super.initComponents();
         // Create new colorMene and sizeMenu.
         this.colorMenu = new JMenu("Color");
         this.sizeMenu = new JMenu("Size");
@@ -52,6 +49,13 @@ public class PersonFormV4 extends PersonFormV3 {
         this.size20 = new JMenuItem("20");
         this.size24 = new JMenuItem("24");
 
+    }
+
+    protected void addSubMenus() {
+
+        // remove colorItem and sizeItem in configMenu.
+        this.configMenu.remove(this.colorItem);
+        this.configMenu.remove(this.sizeItem);
         // Add submenu in ColorMenu.
         this.colorMenu.add(this.redSubMenu);
         this.colorMenu.add(this.greenSubMenu);
@@ -70,7 +74,7 @@ public class PersonFormV4 extends PersonFormV3 {
 
     }
 
-    private void updateMenuIcon() {
+    protected void updateMenuIcon() {
 
         // Add Image to newIcon.
         this.newImageIcon = new ImageIcon(getClass().getResource("images/new.png"));
@@ -86,6 +90,8 @@ public class PersonFormV4 extends PersonFormV3 {
 
     public static void createAndShowGUI() {
         PersonFormV4 personFormV4 = new PersonFormV4("Person Form V4");
+        personFormV4.initComponents();
+        ;
         personFormV4.addComponents();
         personFormV4.addMenus();
         personFormV4.setFrameFeatures();
