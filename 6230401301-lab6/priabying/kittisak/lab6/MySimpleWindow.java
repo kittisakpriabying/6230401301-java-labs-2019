@@ -55,8 +55,8 @@ public class MySimpleWindow extends JFrame {
     protected void addComponents() {
 
         // Add button to buttonPanel.
-        buttonPanel.add(okButton);
         buttonPanel.add(cancelButton);
+        buttonPanel.add(okButton);
 
         // Add mainPanel to endPanel.
         this.endLayout.add(this.buttonPanel);

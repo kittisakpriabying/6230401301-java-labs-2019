@@ -56,7 +56,8 @@ public class PersonFormV1 extends MySimpleWindow {
 
         // Create RadioButton
         this.studentButton = new JRadioButton("Student", false);
-        this.teacheButton = new JRadioButton("Teacher", false);
+        this.teacheButton 
+        = new JRadioButton("Teacher", false);
 
         // Set group type.
         this.group = new ButtonGroup();
