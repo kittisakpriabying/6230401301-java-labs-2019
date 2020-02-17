@@ -79,22 +79,10 @@ public class PersonFormV5 extends PersonFormV4 {
         setValues();
     }
 
-    @Override
-    protected void addComponents() {
-        super.addComponents();
-    }
-
-    protected void addComponts() {
-        super.initComponents();
-        setFonts();
-        setColors();
-        setValues();
-    }
 
     public static void createAndShowGUI() {
         PersonFormV5 personFormV5 = new PersonFormV5("Person Form V5");
         personFormV5.initComponents();
-        personFormV5.addComponents();
         personFormV5.addMenus();
         personFormV5.setFrameFeatures();
 
