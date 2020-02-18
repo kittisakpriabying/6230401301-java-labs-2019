@@ -1,6 +1,6 @@
 package priabying.kittisak.lab8;
 
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -11,31 +11,36 @@ import javax.swing.SwingUtilities;
  */
 public class PersonFormV8 extends PersonFormV7 {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     public PersonFormV8(String nameFrame) {
         super(nameFrame);
     }
 
+
     @Override
-    public void actionPerformed(ActionEvent event) {
-        super.actionPerformed(event);
+    public void itemStateChanged(ItemEvent event) {
+        super.itemStateChanged(event);
         String sport = "Your sport is now changed to " + sportsComboBox.getSelectedItem();
+        Object srcObject = event.getSource();
+        if (srcObject == sportsComboBox) {
+            if (event.getStateChange() == ItemEvent.SELECTED) {
+                JOptionPane.showMessageDialog(this, sport, "Person Information", JOptionPane.INFORMATION_MESSAGE,
+                        new ImageIcon(getClass().getResource("images/java.png")));
 
-        Object srcObj = event.getSource();
-        if (srcObj == sportsComboBox) {
-            JOptionPane.showMessageDialog(this, sport , "Person Information", JOptionPane.INFORMATION_MESSAGE,
-                    new ImageIcon(getClass().getResource("images/java.png")));
+            }
+        }
 
-        } 
     }
 
     @Override
-    protected void addListeners(){
+    protected void addListeners() {
         super.addListeners();
-        sportsComboBox.addActionListener(this);
+        sportsComboBox.addItemListener(this);
     }
-
-
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {

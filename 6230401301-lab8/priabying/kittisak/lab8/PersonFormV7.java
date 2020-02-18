@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import java.awt.event.*;
 
-public class PersonFormV7 extends PersonFormV6 implements ActionListener {
+public class PersonFormV7 extends PersonFormV6 implements ItemListener {
     private static final long serialVersionUID = 1L;
 
     public PersonFormV7(String nameFrame) {
@@ -13,20 +13,24 @@ public class PersonFormV7 extends PersonFormV6 implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent event) {
-        super.actionPerformed(event);
-        
+    public void itemStateChanged(ItemEvent event) {
+
         String student = "Type : student has been selected";
         String teacher = "Type : teacher has been selected";
 
         Object srcObj = event.getSource();
         if (srcObj == studentButton) {
-            JOptionPane.showMessageDialog(this, student, "Person Information", JOptionPane.INFORMATION_MESSAGE,
-                    new ImageIcon(getClass().getResource("images/java.png")));
+            if (event.getStateChange() == ItemEvent.SELECTED) {
+                JOptionPane.showMessageDialog(this, student, "Person Information", JOptionPane.INFORMATION_MESSAGE,
+                        new ImageIcon(getClass().getResource("images/java.png")));
+
+            }
 
         } else if (srcObj == teacheButton) {
-            JOptionPane.showMessageDialog(this, teacher, "Person Information", JOptionPane.INFORMATION_MESSAGE,
-                    new ImageIcon(getClass().getResource("images/java.png")));
+            if (event.getStateChange() == ItemEvent.SELECTED) {
+                JOptionPane.showMessageDialog(this, teacher, "Person Information", JOptionPane.INFORMATION_MESSAGE,
+                        new ImageIcon(getClass().getResource("images/java.png")));
+            }
         }
 
     }
@@ -34,8 +38,8 @@ public class PersonFormV7 extends PersonFormV6 implements ActionListener {
     @Override
     protected void addListeners() {
         super.addListeners();
-        studentButton.addActionListener(this);
-        teacheButton.addActionListener(this);
+        studentButton.addItemListener(this);
+        teacheButton.addItemListener(this);
 
     }
 
@@ -54,4 +58,5 @@ public class PersonFormV7 extends PersonFormV6 implements ActionListener {
         msw.addListeners();
         msw.setFrameFeatures();
     }
+
 }
