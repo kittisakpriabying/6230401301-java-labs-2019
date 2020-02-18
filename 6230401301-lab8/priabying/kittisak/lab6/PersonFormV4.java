@@ -91,7 +91,6 @@ public class PersonFormV4 extends PersonFormV3 {
     public static void createAndShowGUI() {
         PersonFormV4 personFormV4 = new PersonFormV4("Person Form V4");
         personFormV4.initComponents();
-        ;
         personFormV4.addComponents();
         personFormV4.addMenus();
         personFormV4.setFrameFeatures();

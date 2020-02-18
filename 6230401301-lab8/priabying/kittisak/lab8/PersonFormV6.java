@@ -2,9 +2,7 @@ package priabying.kittisak.lab8;
 
 import priabying.kittisak.lab6.*;
 import javax.swing.*;
-
 import java.awt.event.*;
-
 
 public class PersonFormV6 extends PersonFormV5 implements ActionListener {
 
@@ -49,18 +47,16 @@ public class PersonFormV6 extends PersonFormV5 implements ActionListener {
             this.weighTextField.setText("");
             this.birthTextField.setText("");
             this.noteTextArea.setText("");
-            
-        } else if (srcObj == okButton) {
-           
 
-            JOptionPane.showMessageDialog(this, text, "Person", JOptionPane.INFORMATION_MESSAGE,
-                new ImageIcon(getClass().getResource("images/java.png")));
+        } else if (srcObj == okButton) {
+
+            JOptionPane.showMessageDialog(this, text, "Person Information", JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon(getClass().getResource("images/java.png")));
         }
 
-        
     }
 
-    public void addListeners() {
+    protected void addListeners() {
         okButton.addActionListener(this);
         cancelButton.addActionListener(this);
     }
