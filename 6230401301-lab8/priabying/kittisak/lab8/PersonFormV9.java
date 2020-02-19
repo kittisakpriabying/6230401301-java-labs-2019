@@ -55,6 +55,7 @@ public class PersonFormV9 extends PersonFormV8 implements ListSelectionListener 
     public static void createAndShowGUI() {
         PersonFormV9 msw = new PersonFormV9("Person Form V9");
         msw.initComponents();
+        msw.addComponents();
         msw.addMenus();
         msw.addListeners();
         msw.setFrameFeatures();

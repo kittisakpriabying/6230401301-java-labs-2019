@@ -62,6 +62,9 @@ public class PersonFormV1 extends MySimpleWindow {
         // Set group type.
         this.group = new ButtonGroup();
 
+         // Create Panel for typeGroup.
+         this.typeGroup = new JPanel();
+
     }
 
     @Override
@@ -72,8 +75,7 @@ public class PersonFormV1 extends MySimpleWindow {
         this.group.add(this.studentButton);
         this.group.add(this.teacheButton);
 
-        // Create Panel for typeGroup.
-        this.typeGroup = new JPanel();
+       
         // Add studentButton and teacherButton to panel typeGroup.
         typeGroup.add(this.studentButton);
         typeGroup.add(this.teacheButton);

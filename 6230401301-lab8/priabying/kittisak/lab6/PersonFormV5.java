@@ -53,8 +53,7 @@ public class PersonFormV5 extends PersonFormV4 {
     }
 
     protected void setValues() {
-        // Super.
-        super.addComponents();
+        
 
         // Set Text to TextField.
         this.nameTextField.setText("Manee");
@@ -83,6 +82,7 @@ public class PersonFormV5 extends PersonFormV4 {
     public static void createAndShowGUI() {
         PersonFormV5 personFormV5 = new PersonFormV5("Person Form V5");
         personFormV5.initComponents();
+        personFormV5.addComponents();
         personFormV5.addMenus();
         personFormV5.setFrameFeatures();
 

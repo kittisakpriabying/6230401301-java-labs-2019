@@ -53,6 +53,7 @@ public class PersonFormV8 extends PersonFormV7 {
     public static void createAndShowGUI() {
         PersonFormV8 msw = new PersonFormV8("Person Form V8");
         msw.initComponents();
+        msw.addComponents();
         msw.addMenus();
         msw.addListeners();
         msw.setFrameFeatures();

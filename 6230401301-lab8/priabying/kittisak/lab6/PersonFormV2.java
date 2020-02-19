@@ -59,17 +59,16 @@ public class PersonFormV2 extends PersonFormV1 {
 
         this.noteTextArea.setLineWrap(true);
         this.noteTextArea.setWrapStyleWord(true);
+        // Add Item to ComboBox.
+        sportsComboBox.addItem("Running");
+        sportsComboBox.addItem("Swimming");
+        sportsComboBox.addItem("Tennis");
 
     }
 
     @Override
     protected void addComponents() {
         super.addComponents();
-
-        // Add Item to ComboBox.
-        sportsComboBox.addItem("Running");
-        sportsComboBox.addItem("Swimming");
-        sportsComboBox.addItem("Tennis");
 
         // Create GridBagConstraints.
         GridBagConstraints gc = new GridBagConstraints();

@@ -54,6 +54,7 @@ public class PersonFormV7 extends PersonFormV6 implements ItemListener {
     public static void createAndShowGUI() {
         PersonFormV7 msw = new PersonFormV7("Person Form V7");
         msw.initComponents();
+        msw.addComponents();
         msw.addMenus();
         msw.addListeners();
         msw.setFrameFeatures();
