@@ -1,3 +1,15 @@
+/**
+*
+* Event handler for List .
+* This Class implement ListSelectionListener and extends PersonFormV8.
+*
+*
+* Author: kittisak Priabying.
+* ID: 623040130-1
+* Sec: 1
+* Date: Feb 20, 2020
+*
+**/
 package priabying.kittisak.lab8;
 
 import javax.swing.ImageIcon;
@@ -6,16 +18,11 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-/**
- * PersonFormV9
- */
 public class PersonFormV9 extends PersonFormV8 implements ListSelectionListener {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
+    // Constructor string parameter.
     public PersonFormV9(String nameFrame) {
         super(nameFrame);
     }
@@ -23,8 +30,8 @@ public class PersonFormV9 extends PersonFormV8 implements ListSelectionListener 
     @Override
     public void valueChanged(ListSelectionEvent event) {
         String hobbieString = "";
-        for (String string : hobbiesList.getSelectedValuesList()) {
-            hobbieString += string + " ";
+        for (String string : hobbiesList.getSelectedValuesList()) { // Return list selected.
+            hobbieString += string + " "; 
         }
         String hobbies = "Selected Hobbies : " + hobbieString;
         Object srcObject = event.getSource();
@@ -36,10 +43,10 @@ public class PersonFormV9 extends PersonFormV8 implements ListSelectionListener 
 
     }
 
-
     @Override
     protected void addListeners() {
         super.addListeners();
+        // Add ListSelectionListener to hobbiesList.
         hobbiesList.addListSelectionListener(this);
 
     }

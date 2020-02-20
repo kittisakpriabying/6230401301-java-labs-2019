@@ -1,3 +1,15 @@
+/**
+*
+* Event handler for button .
+* This Class implement ActionListener and extends PersonFormV5.
+*
+*
+* Author: kittisak Priabying.
+* ID: 623040130-1
+* Sec: 1
+* Date: Feb 20, 2020
+*
+**/
 package priabying.kittisak.lab8;
 
 import priabying.kittisak.lab6.*;
@@ -8,6 +20,7 @@ public class PersonFormV6 extends PersonFormV5 implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
+    // Constuctor string parameter.
     public PersonFormV6(String nameFrame) {
         super(nameFrame);
     }
@@ -15,32 +28,31 @@ public class PersonFormV6 extends PersonFormV5 implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
         String text = "";
-        String name = "Name : " + nameTextField.getText();
+        String name = "Name : " + nameTextField.getText(); // return text of textfield.
         String height = "\nHight (cm.) : " + heighTextField.getText();
         String weight = "\nWeight (cm.) : " + weighTextField.getText();
         String dateOfBirth = "\nDate of Birth : " + birthTextField.getText();
         String type = "\nType : ";
         if (studentButton.isSelected()) {
-            type += "Student";
+            type += "Student"; // Choose student button.
 
         } else if (teacheButton.isSelected()) {
-            type += "Teacher";
+            type += "Teacher"; // Choose teacher button.
         }
 
-        String sport = "\nSport : " + sportsComboBox.getSelectedItem();
+        String sport = "\nSport : " + sportsComboBox.getSelectedItem(); // Return sport selected .
 
         String h = "";
-        for (String string : hobbiesList.getSelectedValuesList()) {
+        for (String string : hobbiesList.getSelectedValuesList()) { // Rrturn hobbies selected .
             h += string + " ";
         }
-
         String hobbies = "\nHobbies : " + h;
-
-        String note = "\nNote : " + noteTextArea.getText();
+        String note = "\nNote : " + noteTextArea.getText(); // Return text of TextArea.
 
         text += name + height + weight + dateOfBirth + type + sport + hobbies + note;
 
         Object srcObj = event.getSource();
+        // If click cacel button all text are removed.
         if (srcObj == cancelButton) {
             this.nameTextField.setText("");
             this.heighTextField.setText("");
@@ -48,7 +60,7 @@ public class PersonFormV6 extends PersonFormV5 implements ActionListener {
             this.birthTextField.setText("");
             this.noteTextArea.setText("");
 
-        } else if (srcObj == okButton) {
+        } else if (srcObj == okButton) { // If click ok button show image and text.
 
             JOptionPane.showMessageDialog(this, text, "Person Information", JOptionPane.INFORMATION_MESSAGE,
                     new ImageIcon(getClass().getResource("images/java.png")));
@@ -57,6 +69,7 @@ public class PersonFormV6 extends PersonFormV5 implements ActionListener {
     }
 
     protected void addListeners() {
+        // Add ActionListener to button.
         okButton.addActionListener(this);
         cancelButton.addActionListener(this);
     }
