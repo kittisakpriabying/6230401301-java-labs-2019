@@ -31,11 +31,8 @@ public class GraphicsMoverV4 extends GraphicsMoverV3 {
         moveLeftButton.setText("Move Right Up");
         moveRightButton.setText("Move Right Down");
 
-
         centerLayout.remove(canvasDrawerV1);
         centerLayout.add(canvasDrawerV2);
-
-    
 
     }
 

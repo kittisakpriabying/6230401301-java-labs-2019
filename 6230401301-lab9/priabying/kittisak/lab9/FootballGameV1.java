@@ -2,8 +2,6 @@ package priabying.kittisak.lab9;
 
 import javax.swing.*;
 
-import priabying.kittisak.lab7.*;
-
 public class FootballGameV1 extends GraphicsMoverV4 {
     /**
      *
@@ -33,10 +31,10 @@ public class FootballGameV1 extends GraphicsMoverV4 {
         fg1.initComponents();
         fg1.addComponents();
         fg1.setFrameFeatures();
-        fg1.addMenus();
         fg1.setColors();
         fg1.setValues();
         fg1.setFonts();
+        fg1.addMenus();
 
     }
 
