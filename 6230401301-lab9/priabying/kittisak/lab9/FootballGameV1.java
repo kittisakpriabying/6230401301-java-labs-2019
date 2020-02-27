@@ -30,11 +30,12 @@ public class FootballGameV1 extends GraphicsMoverV4 {
         FootballGameV1 fg1 = new FootballGameV1("FootballGameV1");
         fg1.initComponents();
         fg1.addComponents();
-        fg1.setFrameFeatures();
         fg1.setColors();
         fg1.setValues();
         fg1.setFonts();
         fg1.addMenus();
+        fg1.setFrameFeatures();
+        
 
     }
 
