@@ -42,6 +42,8 @@ public class FootballGameV2 extends FootballGameV1 implements ActionListener, Ke
         moveLeftButton.addActionListener(this);
         moveRightButton.addActionListener(this);
 
+        this.addKeyListener(this);
+
     }
 
     public static void createAndShowGUI() {
@@ -72,9 +74,16 @@ public class FootballGameV2 extends FootballGameV1 implements ActionListener, Ke
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
-
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_A) {
+            middlePanel.keeperLeft.moveUp();
+        } else if (key == KeyEvent.VK_S) {
+            middlePanel.keeperLeft.moveDown();
+        } else if (key == KeyEvent.VK_Z) {
+            middlePanel.keeperRight.moveUp();
+        } else if (key == KeyEvent.VK_X) {
+            middlePanel.keeperRight.moveDown();
+        }
     }
 
     @Override
