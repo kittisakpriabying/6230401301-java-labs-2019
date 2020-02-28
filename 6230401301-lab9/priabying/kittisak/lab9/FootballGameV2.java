@@ -75,13 +75,13 @@ public class FootballGameV2 extends FootballGameV1 implements ActionListener, Ke
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-        if (key == KeyEvent.VK_A) {
+        if (key == KeyEvent.VK_UP) {
             middlePanel.keeperLeft.moveUp();
-        } else if (key == KeyEvent.VK_S) {
+        } else if (key == KeyEvent.VK_DOWN) {
             middlePanel.keeperLeft.moveDown();
-        } else if (key == KeyEvent.VK_Z) {
+        } else if (key == KeyEvent.VK_LEFT) {
             middlePanel.keeperRight.moveUp();
-        } else if (key == KeyEvent.VK_X) {
+        } else if (key == KeyEvent.VK_RIGHT) {
             middlePanel.keeperRight.moveDown();
         }
     }

@@ -23,11 +23,11 @@ public class CanvasDrawerV4 extends CanvasDrawerV3 {
                 int y = ball.getYVelocity();
                 ball.setYVelocity(y * -1);
 
-            } else if (ball.getX() >= keeperRight.getX() && ball.getY() + (Ball.BALL_DIAMETER / 2) > keeperRight.getY()
+            } else if (ball.getX() + Ball.BALL_DIAMETER >= keeperRight.getX() && ball.getY() + (Ball.BALL_DIAMETER / 2) > keeperRight.getY()
                     && ball.getY() + (Ball.BALL_DIAMETER / 2) < keeperRight.getY() + keeperRight.height) {
                 ball.setXVelocity(ball.getXVelocity() * (-1));
 
-            } else if (ball.getX() >= keeperLeft.getX() + Keeper.KEEPER_WIDTH
+            } else if (ball.getX() <= keeperLeft.getX() + Keeper.KEEPER_WIDTH
                     && ball.getY() + Ball.BALL_DIAMETER / 2 > keeperLeft.getY()
                     && ball.getY() + Ball.BALL_DIAMETER / 2 < keeperLeft.getY() + Keeper.KEEPER_HEIGHT) {
                 ball.setXVelocity(ball.getXVelocity() * (-1));
