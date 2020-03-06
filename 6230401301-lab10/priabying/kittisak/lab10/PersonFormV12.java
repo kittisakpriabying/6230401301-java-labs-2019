@@ -27,6 +27,7 @@ public class PersonFormV12 extends PersonFormV11 {
     protected void handleOkButton() {
         String info = getInfoFromForm();
         Person person = addPerson();
+        personList.add(person);
         JOptionPane.showMessageDialog(this, info + "\n\nAdding this person into the list:" + person,
                 "Person Information", JOptionPane.INFORMATION_MESSAGE);
 
@@ -70,11 +71,9 @@ public class PersonFormV12 extends PersonFormV11 {
     }
 
     protected void handleDisplayMI() {
-        this.personList = new ArrayList<Person>();
-        personList.add(addPerson());
         String text = "";
         for (int i = 0; i < personList.size(); i++) {
-           text += personList.get(i);
+           text += personList + "\n";
         }
         JOptionPane.showMessageDialog(this, text, "Message", JOptionPane.INFORMATION_MESSAGE,
                         new ImageIcon(getClass().getResource("images/java.png")));
@@ -85,6 +84,12 @@ public class PersonFormV12 extends PersonFormV11 {
         // TODO Auto-generated method stub
         super.addListeners();
         displayItem.addActionListener(this);
+    }
+    @Override
+    protected void addComponents() {
+        // TODO Auto-generated method stub
+        super.addComponents();
+        this.personList = new ArrayList<Person>();
     }
 
     public static void main(String[] args) {
