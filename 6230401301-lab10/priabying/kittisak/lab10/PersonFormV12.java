@@ -40,7 +40,7 @@ public class PersonFormV12 extends PersonFormV11 {
         // convert String to LocalDate
         LocalDate dob = LocalDate.parse(dobTxtField.getText(), formatter);
         Person person = new Person(nameTxtField.getText(), weight, height, dob);
-        return person;
+        return person ;
     }
 
     @Override
@@ -71,11 +71,8 @@ public class PersonFormV12 extends PersonFormV11 {
     }
 
     protected void handleDisplayMI() {
-        String text = "";
-        for (int i = 0; i < personList.size(); i++) {
-           text += personList + "\n";
-        }
-        JOptionPane.showMessageDialog(this, text, "Message", JOptionPane.INFORMATION_MESSAGE,
+        
+        JOptionPane.showMessageDialog(this, personList, "Message", JOptionPane.INFORMATION_MESSAGE,
                         new ImageIcon(getClass().getResource("images/java.png")));
     }
 

@@ -2,7 +2,7 @@ package priabying.kittisak.lab10;
 
 import java.time.*;
 
-public class Person implements Comparable<Person>{
+public class Person {
     protected String name;
     protected double weight;
     protected double height;
@@ -60,9 +60,6 @@ public class Person implements Comparable<Person>{
         return getName() + " is " + age.getYears() + " years " + age.getMonths() + " months " + age.getDays()
                 + " days, has weight as " + weight + " kg., and height as " + height + " cm.";
     }
-    @Override
-    public int compareTo(Person other) {
-        return this.getName().compareToIgnoreCase(other.getName());
-    }
+   
 
 }
