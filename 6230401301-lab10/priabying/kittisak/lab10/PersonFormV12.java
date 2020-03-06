@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.*;
 import javax.swing.SwingUtilities;
@@ -40,7 +41,7 @@ public class PersonFormV12 extends PersonFormV11 {
         // convert String to LocalDate
         LocalDate dob = LocalDate.parse(dobTxtField.getText(), formatter);
         Person person = new Person(nameTxtField.getText(), weight, height, dob);
-        return person ;
+        return person;
     }
 
     @Override
@@ -66,14 +67,37 @@ public class PersonFormV12 extends PersonFormV11 {
         Object src = e.getSource();
         if (src == displayItem) {
             handleDisplayMI();
+        } else if (src == sortItem) {
+            handleSortMI();
+
+        } else if (src == searchItem) {
+            handleSearchMI();
 
         }
     }
 
-    protected void handleDisplayMI() {
-        
+    protected void handleSearchMI() {
+        String name = JOptionPane.showInputDialog("Please enter a person name to search:");
+        Person person = new Person();
+        for (int i = 0; i < personList.size(); i++) {
+            if (person.getName().equals(name)) {
+                JOptionPane.showMessageDialog(this, person + " is found.");
+            }
+
+        }
+
+    }
+
+    protected void handleSortMI() {
+        Collections.sort(personList);
         JOptionPane.showMessageDialog(this, personList, "Message", JOptionPane.INFORMATION_MESSAGE,
-                        new ImageIcon(getClass().getResource("images/java.png")));
+                new ImageIcon(getClass().getResource("images/java.png")));
+
+    }
+
+    protected void handleDisplayMI() {
+        JOptionPane.showMessageDialog(this, personList, "Message", JOptionPane.INFORMATION_MESSAGE,
+                new ImageIcon(getClass().getResource("images/java.png")));
     }
 
     @Override
@@ -81,7 +105,10 @@ public class PersonFormV12 extends PersonFormV11 {
         // TODO Auto-generated method stub
         super.addListeners();
         displayItem.addActionListener(this);
+        sortItem.addActionListener(this);
+        searchItem.addActionListener(this);
     }
+
     @Override
     protected void addComponents() {
         // TODO Auto-generated method stub

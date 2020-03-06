@@ -80,9 +80,9 @@ public class PersonFormV11 extends PersonFormV10 {
 
             }
 
-        }else if (obj == exitMI.getActionCommand()) {
+        } else if (obj == exitMI.getActionCommand()) {
             System.exit(0);
-            
+
         }
     }
 
@@ -96,8 +96,8 @@ public class PersonFormV11 extends PersonFormV10 {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable(){
-            public void run(){
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
                 createAndShowGUI();
             }
         });
