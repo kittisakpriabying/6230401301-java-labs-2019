@@ -1,98 +1,76 @@
-/**
-*
-* Author: kittisak Priabying.
-* ID: 623040130-1
-* Sec: 1
-* Date: Feb 3, 2019
-*
-**/
 package priabying.kittisak.lab6;
 
-import java.awt.Color;
-import java.awt.Font;
-
-import javax.swing.SwingUtilities;
+import java.awt.*;
+import javax.swing.*;
 
 public class PersonFormV5 extends PersonFormV4 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4856657315448982032L;
 
-    private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	protected Font font14Plain = new Font("Serif", Font.PLAIN, 14);
+	protected Font font14Bold = new Font("Serif", Font.BOLD, 14);
 
-    public PersonFormV5() {
-        super();
-    }
-
-    public PersonFormV5(String nameFrame) {
-        super(nameFrame);
-    }
-
+	public PersonFormV5(String title) {
+		super(title);
+	}
+    
     protected void setFonts() {
-
-        // Set font ("Serif" , PLANE , 14 ).
-        this.nameLabel.setFont(new Font("Serif", Font.PLAIN, 14));
-        this.heigheLabel.setFont(new Font("Serif", Font.PLAIN, 14));
-        this.weightLabel.setFont(new Font("Serif", Font.PLAIN, 14));
-        this.birthLabel.setFont(new Font("Serif", Font.PLAIN, 14));
-        this.typeLabel.setFont(new Font("Serif", Font.PLAIN, 14));
-        this.sportsLabel.setFont(new Font("Serif", Font.PLAIN, 14));
-        this.hobbiesLabel.setFont(new Font("Serif", Font.PLAIN, 14));
-        this.noteLabel.setFont(new Font("Serif", Font.PLAIN, 14));
-
-        // Set font ("Serif" , BOLD , 14 ).
-        this.nameTextField.setFont(new Font("Serif", Font.BOLD, 14));
-        this.heighTextField.setFont(new Font("Serif", Font.BOLD, 14));
-        this.weighTextField.setFont(new Font("Serif", Font.BOLD, 14));
-        this.birthTextField.setFont(new Font("Serif", Font.BOLD, 14));
-        this.noteTextArea.setFont(new Font("Serif", Font.BOLD, 14));
-
+        nameLabel.setFont(font14Plain);
+		heightLabel.setFont(font14Plain);
+		weightLabel.setFont(font14Plain);
+        dobLabel.setFont(font14Plain);
+		typeLabel.setFont(font14Plain);
+		reviewLabel.setFont(font14Plain); 
+        
+	    nameTxtField.setFont(font14Bold);
+		heightTxtField.setFont(font14Bold);
+		weightTxtField.setFont(font14Bold);
+		dobTxtField.setFont(font14Bold);
+		
     }
 
     protected void setColors() {
-        // Set color to okButton and cancelButton.
-        this.okButton.setForeground(Color.blue);
-        this.cancelButton.setForeground(Color.red);
+        cancelButton.setForeground(Color.RED); 
+		okButton.setForeground(Color.BLUE);
     }
 
     protected void setValues() {
-        
-
-        // Set Text to TextField.
-        this.nameTextField.setText("Manee");
-        this.heighTextField.setText("160");
-        this.weighTextField.setText("55");
-        this.birthTextField.setText("02-02-2000");
-
-        // Show select student.
-        this.studentButton.setSelected(true);
-        // Show select Swimming.
-        this.sportsComboBox.setSelectedIndex(1);
-        // Show select Reading and Photograpy.
-        this.hobbiesList.setSelectedIndices(new int[] { 0, 3 });
-
+        nameTxtField.setText("Manee");
+		heightTxtField.setText("160");
+		weightTxtField.setText("55");
+        dobTxtField.setText("02-02-2000");
+        student.setSelected(true);
+		typeBox.setSelectedIndex(1);
+		hobbies.setSelectionMode(
+			ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		int[] selectIndices = {0, 3};
+		hobbies.setSelectedIndices(selectIndices);
     }
-
-    @Override
-    protected void initComponents() {
+	protected void initComponents() {
         super.initComponents();
         setFonts();
         setColors();
         setValues();
-    }
-
-
-    public static void createAndShowGUI() {
-        PersonFormV5 personFormV5 = new PersonFormV5("Person Form V5");
-        personFormV5.initComponents();
-        personFormV5.addComponents();
-        personFormV5.addMenus();
-        personFormV5.setFrameFeatures();
-
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
-    }
+	}
+	
+	public static void createAndShowGUI(){
+		PersonFormV5 personForm5 = 
+				new PersonFormV5("Person Form V5");
+		personForm5.addComponents();
+		personForm5.addMenus();
+		personForm5.setFrameFeatures();
+	}
+	
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				createAndShowGUI();
+			}
+		});
+	}
 }

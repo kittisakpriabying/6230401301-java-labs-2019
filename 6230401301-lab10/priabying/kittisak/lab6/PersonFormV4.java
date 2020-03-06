@@ -1,107 +1,74 @@
-/**
-*
-* Author: kittisak Priabying.
-* ID: 623040130-1
-* Sec: 1
-* Date: Feb 3, 2019
-*
-**/
 package priabying.kittisak.lab6;
-
-import javax.swing.JMenuItem;
-import javax.swing.ImageIcon;
-import javax.swing.JMenu;
-import javax.swing.SwingUtilities;
-
+import javax.swing.*;
 public class PersonFormV4 extends PersonFormV3 {
-
-    private static final long serialVersionUID = 1L;
-    protected JMenu colorMenu;
-    protected JMenu sizeMenu;
-    protected ImageIcon newImageIcon;
-    protected JMenuItem redSubMenu;
-    protected JMenuItem greenSubMenu;
-    protected JMenuItem blueSubMenu;
-    protected JMenuItem size16;
-    protected JMenuItem size20;
-    protected JMenuItem size24;
-
-    public PersonFormV4() {
-        super();
-    }
-
-    public PersonFormV4(String nameFrame) {
-        super(nameFrame);
-    }
-
-    @Override
-    protected void initComponents() {
-        super.initComponents();
-        // Create new colorMene and sizeMenu.
-        this.colorMenu = new JMenu("Color");
-        this.sizeMenu = new JMenu("Size");
-
-        // create subMenu by JMenuItem.
-        this.redSubMenu = new JMenuItem("Red");
-        this.greenSubMenu = new JMenuItem("Green");
-        this.blueSubMenu = new JMenuItem("Blue");
-        this.size16 = new JMenuItem("16");
-        this.size20 = new JMenuItem("20");
-        this.size24 = new JMenuItem("24");
-
-    }
-
-    protected void addSubMenus() {
-
-        // remove colorItem and sizeItem in configMenu.
-        this.configMenu.remove(this.colorItem);
-        this.configMenu.remove(this.sizeItem);
-        // Add submenu in ColorMenu.
-        this.colorMenu.add(this.redSubMenu);
-        this.colorMenu.add(this.greenSubMenu);
-        this.colorMenu.add(this.blueSubMenu);
-
-        // Add submenu in sizeMenu.
-        this.sizeMenu.add(this.size16);
-        this.sizeMenu.add(this.size20);
-        this.sizeMenu.add(this.size24);
-
-        // Add colorMenu in configMenu.
-        this.configMenu.add(this.colorMenu);
-
-        // Add sizeMenu in configMenu.
-        this.configMenu.add(this.sizeMenu);
-
-    }
-
+    /**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	protected JMenu colorMenu, sizeMenu;
+	protected JMenuItem redMI, greenMI, blueMI, 
+	size16MI, size20MI, size24MI;
+	
+	public PersonFormV4(String title) {
+		super(title);
+	}
+    
     protected void updateMenuIcon() {
+		fileMenu.remove(newMI);
+		ImageIcon newImgIcon = new ImageIcon("images/new.jpg");
+		newMI = new JMenuItem("New", newImgIcon);
+		fileMenu.add(newMI);
+		fileMenu.remove(openMI);
+		fileMenu.add(openMI);
+		fileMenu.remove(saveMI);
+		fileMenu.add(saveMI);
+		fileMenu.remove(exitMI);
+		fileMenu.add(exitMI);
+	}
+	
+	protected void addSubMenus() {
+		redMI = new JMenuItem("Red");
+		greenMI = new JMenuItem("Green");
+		blueMI = new JMenuItem("Blue");
 
-        // Add Image to newIcon.
-        this.newImageIcon = new ImageIcon(getClass().getResource("images/new.png"));
-        this.newItem.setIcon(this.newImageIcon);
-
+		configMenu.remove(colorMI);
+		colorMenu = new JMenu("Color");
+		colorMenu.add(redMI);
+		colorMenu.add(greenMI);
+		colorMenu.add(blueMI);
+		
+		size16MI = new JMenuItem("16");
+		size20MI = new JMenuItem("20");
+		size24MI = new JMenuItem("24");
+		configMenu.remove(sizeMI);
+		sizeMenu = new JMenu("Size");
+		sizeMenu.add(size16MI);
+		sizeMenu.add(size20MI);
+		sizeMenu.add(size24MI);
+		
+		configMenu.add(colorMenu);
+		configMenu.add(sizeMenu);
     }
-
-    protected void addMenus() {
+    
+	protected void addMenus() {
         super.addMenus();
         updateMenuIcon();
         addSubMenus();
-    }
+	}
 
-    public static void createAndShowGUI() {
-        PersonFormV4 personFormV4 = new PersonFormV4("Person Form V4");
-        personFormV4.initComponents();
-        personFormV4.addComponents();
-        personFormV4.addMenus();
-        personFormV4.setFrameFeatures();
-
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
-    }
+	public static void createAndShowGUI(){
+		PersonFormV4 personForm4 = 
+				new PersonFormV4("Person Form V4");
+		personForm4.addComponents();
+		personForm4.addMenus(); 
+		personForm4.setFrameFeatures();
+	}
+	
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				createAndShowGUI();
+			}
+		});
+	}
 }

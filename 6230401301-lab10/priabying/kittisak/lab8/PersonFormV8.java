@@ -1,58 +1,30 @@
-/**
-*
-* Event handler for combobox .
-* This Class extends PersonFormV7.
-*
-*
-* Author: kittisak Priabying.
-* ID: 623040130-1
-* Sec: 1
-* Date: Feb 20, 2020
-*
-**/
-
 package priabying.kittisak.lab8;
 
-import java.awt.event.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-public class PersonFormV8 extends PersonFormV7 {
+import java.awt.event.*;
+import javax.swing.*;
+/**
+ * PersonFormV8
+ */
+public class PersonFormV8 extends PersonFormV7 implements ItemListener{
 
+    /**
+     *
+     */
     private static final long serialVersionUID = 1L;
 
-    // Constructor string parameter.
-    public PersonFormV8(String nameFrame) {
-        super(nameFrame);
-    }
-
-    @Override
-    public void itemStateChanged(ItemEvent event) {
-        super.itemStateChanged(event);
-        String sport = "Your sport is now changed to " + sportsComboBox.getSelectedItem(); // return sport selected.
-        Object srcObject = event.getSource();
-        if (srcObject == sportsComboBox) {
-            if (event.getStateChange() == ItemEvent.SELECTED) { // Sports combobox is selected.
-                JOptionPane.showMessageDialog(this, sport, "Person Information", JOptionPane.INFORMATION_MESSAGE,
-                        new ImageIcon(getClass().getResource("images/java.png")));
-
-            }
-        }
-
-    }
-
-    @Override
-    protected void addListeners() {
-        super.addListeners();
-        // Add ItemListener to sport combobox.
-        sportsComboBox.addItemListener(this);
+    public PersonFormV8(String string) {
+        super(string);
+        // TODO Auto-generated constructor stub
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
                 createAndShowGUI();
             }
         });
@@ -60,10 +32,28 @@ public class PersonFormV8 extends PersonFormV7 {
 
     public static void createAndShowGUI() {
         PersonFormV8 msw = new PersonFormV8("Person Form V8");
-        msw.initComponents();
         msw.addComponents();
         msw.addMenus();
         msw.addListeners();
         msw.setFrameFeatures();
     }
+
+    @Override
+    protected void addListeners() {
+        super.addListeners();
+        typeBox.addItemListener(this);
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        if (e.getStateChange() == ItemEvent.SELECTED) {
+            Object item = e.getItem();
+            JOptionPane.showMessageDialog(this,
+                "Your sport is now changed to "+ item.toString(),
+                "Person Information",
+            JOptionPane.INFORMATION_MESSAGE);
+         }
+    }
+
+	
 }

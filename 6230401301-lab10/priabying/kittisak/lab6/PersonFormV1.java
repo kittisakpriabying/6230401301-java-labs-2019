@@ -1,166 +1,116 @@
-/**
-*
-* Author: kittisak Priabying.
-* ID: 623040130-1
-* Sec: 1
-* Date: Feb 2, 2019
-*
-**/
 package priabying.kittisak.lab6;
 
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
+/**
+ * This program PersonFormV1 extends from MySimpleWindow 
+ * The program should have the following properties:
+ * 1) Each line has the following properties: 1)The left part contains 
+ * JLabel and then 2) the right part contains 
+ * JTextField which its length is 15.  
+ * Note that you need to have this value saved in a constant class member. 
+ * 2) The first line contains the label which it is set as “Name:”
+ * 3) The second line contains the label which it is set as “Height (cm.):”   
+ * 4) The third line contains the label which it is set as “Weight (kg.):” 
+ * 5) The fourth line contains the label which it is set as “Date of birth (eg., 31-01-1990):”
+ * 6) The fifth line contains the radio buttons which are “Student” and “Teacher”.  
+ * Only one radio button can be clicked at a time
+ * 7) The sixth line contains two buttons which should be named “Cancel” 
+ * and “OK” respectively.
+ * @author: Kanda Saikaew
+ * @date:  19/01/2020
+ * @version: 1.0
+ */
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-import java.awt.*;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
 
 public class PersonFormV1 extends MySimpleWindow {
-
-    private static final long serialVersionUID = 1L;
-    protected JLabel nameLabel, heigheLabel, weightLabel, birthLabel, typeLabel;
-    protected JTextField nameTextField, heighTextField, weighTextField, birthTextField;
-    protected JRadioButton studentButton, teacheButton;
-    protected ButtonGroup group;
-    protected JPanel v1Panel, typeGroup;
-
-    // constructor no paramter.
-    public PersonFormV1() {
-        super();
-
-    }
-
-    // constructor one paramter. (String)
-    public PersonFormV1(String nameFrame) {
-        super(nameFrame);
-
-    }
-
-    @Override
-    protected void initComponents() {
-        
-        super.initComponents();
-        // Create Label.
-        this.nameLabel = new JLabel("Name:"); // Name
-        this.heigheLabel = new JLabel("Height (cm.):"); // Height
-        this.weightLabel = new JLabel("Weight (kg.):"); // Eeight
-        this.birthLabel = new JLabel("Date of birth (eg.,31-01-1990):"); // Birth Day
-        this.typeLabel = new JLabel("Type:"); // Type
-
-        // Create TextField.
-        this.heighTextField = new JTextField(15); // Height
-        this.nameTextField = new JTextField(15); // Name
-        this.weighTextField = new JTextField(15); // Weight
-        this.birthTextField = new JTextField(15); // Birth day
-
-        // Create RadioButton
-        this.studentButton = new JRadioButton("Student", false);
-        this.teacheButton 
-        = new JRadioButton("Teacher", false);
-
-        // Set group type.
-        this.group = new ButtonGroup();
-
-         // Create Panel for typeGroup.
-         this.typeGroup = new JPanel();
-
-    }
-
-    @Override
-    protected void addComponents() {
-
-        
-        // Add studentButton and teacherButton to group.
-        this.group.add(this.studentButton);
-        this.group.add(this.teacheButton);
-
-       
-        // Add studentButton and teacherButton to panel typeGroup.
-        typeGroup.add(this.studentButton);
-        typeGroup.add(this.teacheButton);
-
-        // Set Layout
-        GridBagConstraints gc = new GridBagConstraints();
-        this.v1Panel = new JPanel(new GridBagLayout());
-
-        gc.insets = new Insets(3, 3, 3, 3);
-        gc.fill = GridBagConstraints.HORIZONTAL;
-        gc.weightx = 1;
-        gc.weighty = 1;
-
-        // Name (0,0).
-        gc.gridx = 0;
-        gc.gridy = 0;
-        gc.anchor = GridBagConstraints.WEST;
-        v1Panel.add(this.nameLabel, gc); // Add nameLabel to v1Panel.
-
-        // nameTextField (1,0).
-        gc.gridx = 1;
-        gc.gridy = 0;
-        gc.anchor = GridBagConstraints.EAST;
-        v1Panel.add(this.nameTextField, gc);
-
-        gc.gridx = 0;
-        gc.gridy = 1;
-        gc.anchor = GridBagConstraints.WEST;
-        v1Panel.add(this.heigheLabel, gc);
-
-        gc.gridx = 1;
-        gc.gridy = 1;
-        gc.anchor = GridBagConstraints.EAST;
-        v1Panel.add(this.heighTextField, gc);
-
-        gc.gridx = 0;
-        gc.gridy = 2;
-        gc.anchor = GridBagConstraints.WEST;
-        v1Panel.add(this.weightLabel, gc);
-
-        gc.gridx = 1;
-        gc.gridy = 2;
-        gc.anchor = GridBagConstraints.EAST;
-        v1Panel.add(this.weighTextField, gc);
-
-        gc.gridx = 0;
-        gc.gridy = 3;
-        gc.anchor = GridBagConstraints.WEST;
-        v1Panel.add(this.birthLabel, gc);
-
-        gc.gridx = 1;
-        gc.gridy = 3;
-        gc.anchor = GridBagConstraints.EAST;
-        v1Panel.add(this.birthTextField, gc);
-
-        gc.gridx = 0;
-        gc.gridy = 4;
-        gc.anchor = GridBagConstraints.WEST;
-        v1Panel.add(this.typeLabel, gc);
-
-        gc.gridx = 1;
-        gc.gridy = 4;
-        gc.anchor = GridBagConstraints.EAST;
-        v1Panel.add(this.typeGroup, gc);
-
-        // Add v1Panel to centerLaout from MySimpleWindow class.
-        this.centerLayout.add(this.v1Panel);
-
-        super.addComponents();
-
-    }
-
-    public static void createAndShowGUI() {
-        PersonFormV1 personFormV1 = new PersonFormV1("Person form V1");
-        personFormV1.initComponents();;
-        personFormV1.addComponents();
-        personFormV1.setFrameFeatures();
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
-    }
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3629832942393810272L;
+	protected JLabel nameLabel, heightLabel, weightLabel, dobLabel, typeLabel;
+	protected JTextField nameTxtField, heightTxtField, weightTxtField, 
+			dobTxtField;
+	protected JPanel namePanel, heightPanel, weightPanel, dobPanel, typePanel;
+	protected JPanel overallPanel, textsPanel, typeChoicesPanel;
+	protected JRadioButton student, teacher;
+	protected ButtonGroup typeNames;
+	public final static int TXTFIELD_WIDTH = 15;
+	
+	public PersonFormV1(String title) {
+		super(title);
+	}
+	
+	protected void initComponents() {
+		namePanel = new JPanel(new GridLayout(1,2));
+		heightPanel = new JPanel(new GridLayout(1,2));
+		weightPanel = new JPanel(new GridLayout(1,2));
+		dobPanel = new JPanel(new GridLayout(1,2));
+		typePanel = new JPanel(new GridLayout(1,2));
+		typeChoicesPanel = new JPanel();
+		nameLabel = new JLabel("Name:");
+		nameTxtField = new JTextField(TXTFIELD_WIDTH);
+		heightLabel = new JLabel("Height (cm.):");
+		heightTxtField = new JTextField(TXTFIELD_WIDTH);
+		weightLabel = new JLabel("Weight (kg.):");
+		weightTxtField = new JTextField(TXTFIELD_WIDTH);
+		dobLabel = new JLabel("Date of birth (eg.,31-01-1990):");
+		dobTxtField = new JTextField(TXTFIELD_WIDTH);
+		typeLabel = new JLabel("Type:");
+		student = new JRadioButton("Student");
+		teacher = new JRadioButton("Teacher");
+		typeNames = new ButtonGroup();
+		typeNames.add(student);
+		typeNames.add(teacher);
+		textsPanel = new JPanel(new GridLayout(5,1));
+		overallPanel = new JPanel(new BorderLayout());
+	}
+	protected void setLabelTxtField(JPanel panel,
+		JLabel label, JTextField txtField) {
+		panel.add(label);
+		panel.add(txtField);
+	}
+	protected void addComponents() {
+		super.addComponents();
+		initComponents();
+		setLabelTxtField(namePanel, nameLabel, nameTxtField);
+		setLabelTxtField(heightPanel, heightLabel, heightTxtField);
+		setLabelTxtField(weightPanel, weightLabel, weightTxtField);
+		setLabelTxtField(dobPanel, dobLabel, dobTxtField);
+	    typePanel.add(typeLabel);
+		typeChoicesPanel.add(student);
+		typeChoicesPanel.add(teacher);
+		typePanel.add(typeLabel);
+		typePanel.add(typeChoicesPanel);
+		textsPanel.add(namePanel);
+		textsPanel.add(heightPanel);
+		textsPanel.add(weightPanel);
+		textsPanel.add(dobPanel);
+		textsPanel.add(typePanel);
+		overallPanel.add(textsPanel, BorderLayout.NORTH);
+		overallPanel.add(buttonsPanel, BorderLayout.SOUTH);
+		setContentPane(overallPanel);
+	}
+	
+	public static void createAndShowGUI(){
+		PersonFormV1 PersonFormV1
+			= new PersonFormV1("Person Form V1");
+		PersonFormV1.addComponents();
+		PersonFormV1.setFrameFeatures();
+	}
+	
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				createAndShowGUI();
+			}
+		});
+	}
 }

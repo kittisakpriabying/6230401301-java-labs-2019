@@ -1,114 +1,34 @@
-/**
-*
-* Event handler for menu , submenu .
-* This Class implement  extends PersonFormV9.
-*
-*
-* Author: kittisak Priabying.
-* ID: 623040130-1
-* Sec: 1
-* Date: Feb 20, 2020
-*
-**/
 package priabying.kittisak.lab8;
 
-import javax.swing.*;
+
+import javax.swing.SwingUtilities;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import java.awt.event.*;
+import javax.swing.*;
 import java.awt.*;
 
-public class PersonFormV10 extends PersonFormV9 {
+/**
+ * PersonFormV10
+ */
+public class PersonFormV10 extends PersonFormV9{
 
+    /**
+     *
+     */
     private static final long serialVersionUID = 1L;
 
-    // Constructor string parameter.
-    public PersonFormV10(String nameFrame) {
-        super(nameFrame);
-    }
 
-    // Create method set font color.
-    protected void setFontColor(Color color) {
-        this.nameTextField.setForeground(color);
-        this.weighTextField.setForeground(color);
-        this.heighTextField.setForeground(color);
-        this.birthTextField.setForeground(color);
-        this.noteTextArea.setForeground(color);
+    public PersonFormV10(String string) {
+        super(string);
 
-    }
 
-    // Create method set font size.
-    protected void setFontSize(int size) {
-        this.nameTextField.setFont(new Font("Serif", Font.PLAIN, size));
-        this.heighTextField.setFont(new Font("Serif", Font.PLAIN, size));
-        this.weighTextField.setFont(new Font("Serif", Font.PLAIN, size));
-        this.birthTextField.setFont(new Font("Serif", Font.PLAIN, size));
-        this.noteTextArea.setFont(new Font("Serif", Font.PLAIN, size));
-
-    }
-
-    // Create method addKey() can click keybord.
-    protected void addKeys() {
-        // Set the accelerator.
-        // Can click Ctrl+...
-        this.redSubMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK)); // Ctrl + R
-        this.greenSubMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, ActionEvent.CTRL_MASK)); // Ctrl + G
-        this.blueSubMenu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK)); // Ctrl + B
-        this.size16.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.CTRL_MASK)); // Ctrl + 1
-        this.size20.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_0, ActionEvent.CTRL_MASK)); // Ctrl + 0
-        this.size24.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4, ActionEvent.CTRL_MASK)); // Ctrl + 4
-
-        // Set the Mnemonic .
-        this.redSubMenu.setMnemonic(KeyEvent.VK_R);
-        this.greenSubMenu.setMnemonic(KeyEvent.VK_G);
-        this.blueSubMenu.setMnemonic(KeyEvent.VK_B);
-        this.configMenu.setMnemonic(KeyEvent.VK_C);
-        this.colorMenu.setMnemonic(KeyEvent.VK_L);
-        this.sizeMenu.setMnemonic(KeyEvent.VK_Z);
-        this.size16.setMnemonic(KeyEvent.VK_1);
-        this.size20.setMnemonic(KeyEvent.VK_0);
-        this.size24.setMnemonic(KeyEvent.VK_4);
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent event) {
-        super.actionPerformed(event);
-        Object srcObject = event.getSource();
-        if (srcObject == redSubMenu) {
-            setFontColor(Color.RED);
-        } else if (srcObject == greenSubMenu) {
-            setFontColor(Color.GREEN);
-
-        } else if (srcObject == blueSubMenu) {
-            setFontColor(Color.BLUE);
-
-        } else if (srcObject == size16) {
-            setFontSize(16);
-
-        } else if (srcObject == size20) {
-            setFontSize(20);
-
-        } else if (srcObject == size24) {
-            setFontSize(24);
-        }
-
-    }
-
-    @Override
-    protected void addListeners() {
-        super.addListeners();
-        // Add ActionListener to submenu.
-        redSubMenu.addActionListener(this);
-        greenSubMenu.addActionListener(this);
-        blueSubMenu.addActionListener(this);
-        size16.addActionListener(this);
-        size20.addActionListener(this);
-        size24.addActionListener(this);
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
                 createAndShowGUI();
             }
         });
@@ -116,11 +36,79 @@ public class PersonFormV10 extends PersonFormV9 {
 
     public static void createAndShowGUI() {
         PersonFormV10 msw = new PersonFormV10("Person Form V10");
-        msw.initComponents();
         msw.addComponents();
         msw.addMenus();
         msw.addListeners();
         msw.addKeys();
         msw.setFrameFeatures();
+    }
+
+    protected void addKeys() {
+        redMI.setMnemonic(KeyEvent.VK_R);
+        greenMI.setMnemonic(KeyEvent.VK_G);
+        blueMI.setMnemonic(KeyEvent.VK_B);
+        configMenu.setMnemonic(KeyEvent.VK_C);
+        colorMenu.setMnemonic(KeyEvent.VK_L);
+        sizeMenu.setMnemonic(KeyEvent.VK_Z);
+        size16MI.setMnemonic(KeyEvent.VK_1);
+        size20MI.setMnemonic(KeyEvent.VK_0);
+        size24MI.setMnemonic(KeyEvent.VK_4);
+
+        redMI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
+        greenMI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, ActionEvent.CTRL_MASK));
+        blueMI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
+        size16MI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.CTRL_MASK));
+        size20MI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_0, ActionEvent.CTRL_MASK));
+        size24MI.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4, ActionEvent.CTRL_MASK));
+       // openMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
+
+    }
+
+    @Override
+    protected void addListeners() {
+        super.addListeners();
+        redMI.addActionListener(this);
+        greenMI.addActionListener(this);
+        blueMI.addActionListener(this);
+        size16MI.addActionListener(this);
+        size20MI.addActionListener(this);
+        size24MI.addActionListener(this);
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        super.actionPerformed(e);
+        Object source = e.getSource();
+        if(source == redMI){
+            changeColor(Color.RED);
+        } else if(source == greenMI){
+            changeColor(Color.GREEN);
+        } else if(source == blueMI){
+            changeColor(Color.BLUE);
+        } else if(source == size16MI){
+            changeSize(16);
+        } else if(source == size20MI){
+            changeSize(20);
+        } else if(source == size24MI){
+            changeSize(24);
+        }
+    }
+
+    protected void changeColor(Color c){
+        nameTxtField.setForeground(c);
+        heightTxtField.setForeground(c);
+        weightTxtField.setForeground(c);
+        dobTxtField.setForeground(c);
+        reviewTxtArea.setForeground(c);
+    }
+
+    protected void changeSize(int size){
+        Font label = new Font("Serif", Font.PLAIN, size);
+        Font text = new Font("Serif", Font.BOLD, size);
+        nameTxtField.setFont(text);
+        heightTxtField.setFont(text);
+        weightTxtField.setFont(text);
+        dobTxtField.setFont(text);
+        reviewTxtArea.setFont(text);
     }
 }

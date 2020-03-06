@@ -1,12 +1,23 @@
-/**
-*
-* Author: kittisak Priabying.
-* ID: 623040130-1
-* Sec: 1
-* Date: Feb 2, 2019
-*
-**/
 package priabying.kittisak.lab6;
+
+/**
+ * This program Mobile DeviceFormV2 extends from Mobile DeviceFormV1 
+ * The program should have the following properties:
+ * 1. The title of the program should be “Mobile Device Form V2”
+ * 2. Add the label “Gender”” and two radio buttons “Male and “Female”
+ * 3. Add the label “Address:” and the text area with 2 rows and 35 columns.   
+ * 4. Create the scroll pane and add the text area in that scroll pane.  
+ * 5. Initialize the text area with the content as "Department of Computer Engineering, 
+ * Faculty of Engineering, Khon Kaen University, Mittraparp Rd., T. Naimuang, 
+ * A. Muang, Khon Kaen, Thailand, 40002"
+ * 6. Place the Gender and the Address parts above the two buttons. 
+ * 
+ * @author: Kanda Saikaew
+ * @date:  21/02/2017
+ * @version: 1.0
+ */
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -14,109 +25,67 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
-import java.awt.*;
 
 public class PersonFormV2 extends PersonFormV1 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3694909354550437224L;
 
-    private static final long serialVersionUID = 1L;
-    protected JLabel sportsLabel;
-    protected JLabel noteLabel;
-    protected JPanel notePanel;
-    protected JTextArea noteTextArea;
-    protected JComboBox<String> sportsComboBox;
-    protected JScrollPane noteScrollPane;
-
-    // constructor no paramter.
-    public PersonFormV2() {
-        super();
-    }
-
-    // constructor one paramter. (String)
-    public PersonFormV2(String nameFrame) {
-        super(nameFrame);
-    }
-
-    @Override
-    protected void initComponents() {
-        super.initComponents();
-
-        // Create Label.
-        this.sportsLabel = new JLabel("Sports:"); // Sports.
-        this.noteLabel = new JLabel("Note:"); // Note.
-
-        // Create ComboBox.
-        this.sportsComboBox = new JComboBox<String>();
-
-        // Create Panel and GridBagLaout.
-        this.notePanel = new JPanel(new GridBagLayout());
-
-        // Create TextArea 3 rows and 35 columns.
-        this.noteTextArea = new JTextArea(
-                "21st Century skills include Critical thinking, Creativity, Collaboration, Communication, etc.", 2, 35);
-
-        // Create ScrollPane.
-        this.noteScrollPane = new JScrollPane(this.noteTextArea);
-
-        this.noteTextArea.setLineWrap(true);
-        this.noteTextArea.setWrapStyleWord(true);
-        // Add Item to ComboBox.
-        sportsComboBox.addItem("Running");
-        sportsComboBox.addItem("Swimming");
-        sportsComboBox.addItem("Tennis");
-
-    }
-
-    @Override
-    protected void addComponents() {
-        super.addComponents();
-
-        // Create GridBagConstraints.
-        GridBagConstraints gc = new GridBagConstraints();
-
-        // Set Layout notePanel.
-        gc.weighty = 1.0;
-        gc.weightx = 1.0;
-        gc.insets = new Insets(3, 3, 3, 3);
-        gc.fill = GridBagConstraints.HORIZONTAL;
-
-        gc.gridy = 0;
-        gc.gridx = 0;
-        gc.anchor = GridBagConstraints.WEST;
-        this.notePanel.add(this.noteLabel, gc);
-        gc.gridy = 1;
-        gc.gridx = 0;
-        this.notePanel.add(this.noteScrollPane, gc);
-
-        // Continuing from PersonFormV1.
-        gc.gridy = 5;
-        gc.gridx = 0;
-        gc.anchor = GridBagConstraints.WEST;
-        this.v1Panel.add(this.sportsLabel, gc);
-
-        gc.gridy = 5;
-        gc.gridx = 1;
-        gc.anchor = GridBagConstraints.EAST;
-        this.v1Panel.add(this.sportsComboBox, gc);
-
-        // Add notePanel to endLayout from MySimpleWindow class.
-        this.centerLayout.add(this.notePanel);
-
-    }
-
-    public static void createAndShowGUI() {
-        PersonFormV2 personFormV2 = new PersonFormV2("Person Form V2");
-        personFormV2.initComponents();
-        personFormV2.addComponents();
-        personFormV2.setFrameFeatures();
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
-
-    }
-
+	protected JTextArea reviewTxtArea;
+	protected JScrollPane reviewScrollPane;
+	protected JPanel reviewPanel, contentPanel, typePanel;
+	protected JLabel reviewLabel, typeLabel;
+	protected JComboBox<String> typeBox;
+	protected String[] typesValues = {"Running", "Swimming", "Tennis"};
+	
+	public final static int NUM_TXTAREA_ROWS = 2;
+	public final static int NUM_TXTAREA_COLS = 35;
+	
+	public PersonFormV2(String title) {
+		super(title);
+	}
+	
+	protected void initComponents() {
+		super.initComponents();
+		reviewTxtArea = new JTextArea(NUM_TXTAREA_ROWS, NUM_TXTAREA_COLS);
+		reviewTxtArea.setLineWrap(true);
+		reviewTxtArea.setWrapStyleWord(true);
+        reviewTxtArea.setText("21st Century skills include");
+        reviewTxtArea.append("Critical thinking, Creativity, Collaboration, ");
+        reviewTxtArea.append("Communication, etc.");
+		reviewScrollPane = new JScrollPane(reviewTxtArea);
+		reviewPanel = new JPanel(new BorderLayout());
+		contentPanel = new JPanel(new BorderLayout());
+		typePanel = new JPanel(new GridLayout(1,2));
+		reviewLabel = new JLabel("Note:");
+		typeLabel = new JLabel("Sports:");
+		typeBox = new JComboBox<String>(typesValues);
+	}
+	
+	protected void addComponents() {
+		super.addComponents();
+		reviewPanel.add(reviewLabel, BorderLayout.NORTH);
+		reviewPanel.add(reviewScrollPane, BorderLayout.SOUTH);
+		typePanel.add(typeLabel);
+		typePanel.add(typeBox);
+		contentPanel.add(textsPanel, BorderLayout.NORTH);
+		contentPanel.add(typePanel, BorderLayout.CENTER);
+		contentPanel.add(reviewPanel, BorderLayout.SOUTH);
+		overallPanel.add(contentPanel, BorderLayout.NORTH);
+	}
+	public static void createAndShowGUI(){
+		PersonFormV2 personForm2 = 
+				new PersonFormV2("Person Form V2");
+		personForm2.addComponents();
+		personForm2.setFrameFeatures();
+	}
+	
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				createAndShowGUI();
+			}
+		});
+	}
 }

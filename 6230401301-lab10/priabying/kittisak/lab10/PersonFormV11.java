@@ -49,11 +49,11 @@ public class PersonFormV11 extends PersonFormV10 {
         super.actionPerformed(event);
         Object obj = event.getActionCommand();
         if (obj == customItem.getActionCommand()) {
-            Color selectedColor = JColorChooser.showDialog(this, "Color Chooser", nameTextField.getForeground());
+            Color selectedColor = JColorChooser.showDialog(this, "Color Chooser", nameTxtField.getForeground());
             if (selectedColor != null) {
-                setFontColor(selectedColor);
+                changeColor(selectedColor);
             }
-        } else if (obj == openItem.getActionCommand()) {
+        } else if (obj == openMI.getActionCommand()) {
             int returnVal = openFile.showOpenDialog(this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 String text = "Opening file " + openFile.getSelectedFile().getName();
@@ -66,7 +66,7 @@ public class PersonFormV11 extends PersonFormV10 {
                         new ImageIcon(getClass().getResource("images/java.png")));
             }
 
-        } else if (obj == saveItem.getActionCommand()) {
+        } else if (obj == saveMI.getActionCommand()) {
             int returnVal = saveFile.showSaveDialog(this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 String text = "Saving file " + saveFile.getSelectedFile().getName();
@@ -80,6 +80,9 @@ public class PersonFormV11 extends PersonFormV10 {
 
             }
 
+        }else if (obj == exitMI.getActionCommand()) {
+            System.exit(0);
+            
         }
     }
 
@@ -87,14 +90,14 @@ public class PersonFormV11 extends PersonFormV10 {
     protected void addListeners() {
         super.addListeners();
         customItem.addActionListener(this);
-        openItem.addActionListener(this);
-        saveItem.addActionListener(this);
-        exitItem.addActionListener(this);
+        openMI.addActionListener(this);
+        saveMI.addActionListener(this);
+        exitMI.addActionListener(this);
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
                 createAndShowGUI();
             }
         });
@@ -102,7 +105,6 @@ public class PersonFormV11 extends PersonFormV10 {
 
     public static void createAndShowGUI() {
         PersonFormV11 msw = new PersonFormV11("Person Form V11");
-        msw.initComponents();
         msw.addComponents();
         msw.addMenus();
         msw.addListeners();
