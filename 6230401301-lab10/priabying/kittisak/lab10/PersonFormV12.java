@@ -5,21 +5,21 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.swing.*;
 import javax.swing.SwingUtilities;
 
-/**
- * PersonFormV12
- */
 public class PersonFormV12 extends PersonFormV11 {
-    /**
-     *
-     */
+
     private static final long serialVersionUID = 1L;
     protected JMenu dataMenu;
     protected JMenuItem displayItem, sortItem, searchItem, removeItem;
-    protected ArrayList<Person> personList;
+    protected List<String> personList;
+    protected Map<String, String> personMap;
 
     public PersonFormV12(String nameFrame) {
         super(nameFrame);
@@ -27,21 +27,25 @@ public class PersonFormV12 extends PersonFormV11 {
 
     protected void handleOkButton() {
         String info = getInfoFromForm();
-        Person person = addPerson();
+        String person = addPerson();
+
         personList.add(person);
+        Person ll = new Person();
+        personMap.put(ll.getName(), person);
+
         JOptionPane.showMessageDialog(this, info + "\n\nAdding this person into the list:" + person,
                 "Person Information", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
-    protected Person addPerson() {
+    protected String addPerson() {
         double weight = Double.parseDouble(weightTxtField.getText());
         double height = Double.parseDouble(heightTxtField.getText());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        // convert String to LocalDate
+
         LocalDate dob = LocalDate.parse(dobTxtField.getText(), formatter);
         Person person = new Person(nameTxtField.getText(), weight, height, dob);
-        return person;
+        return person.toString();
     }
 
     @Override
@@ -78,13 +82,10 @@ public class PersonFormV12 extends PersonFormV11 {
 
     protected void handleSearchMI() {
         String name = JOptionPane.showInputDialog("Please enter a person name to search:");
-        Person person = new Person();
-        for (int i = 0; i < personList.size(); i++) {
-            if (person.getName().equals(name)) {
-                JOptionPane.showMessageDialog(this, person + " is found.");
-            }
 
-        }
+
+
+        
 
     }
 
@@ -98,6 +99,7 @@ public class PersonFormV12 extends PersonFormV11 {
     protected void handleDisplayMI() {
         JOptionPane.showMessageDialog(this, personList, "Message", JOptionPane.INFORMATION_MESSAGE,
                 new ImageIcon(getClass().getResource("images/java.png")));
+
     }
 
     @Override
@@ -113,7 +115,8 @@ public class PersonFormV12 extends PersonFormV11 {
     protected void addComponents() {
         // TODO Auto-generated method stub
         super.addComponents();
-        this.personList = new ArrayList<Person>();
+        this.personList = new ArrayList<String>();
+        this.personMap = new HashMap<String, String>();
     }
 
     public static void main(String[] args) {
