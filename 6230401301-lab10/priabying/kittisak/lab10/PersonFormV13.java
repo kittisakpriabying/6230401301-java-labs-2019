@@ -21,7 +21,6 @@ public class PersonFormV13 extends PersonFormV12 {
     protected double MIN_DAY = 1.00f, MAX_DAY = 31.00f, MIN_MONTH = 1.00f, MAX_MONTH = 12.00f, MIN_YEAR = 1900.00f,
             MAX_YEAR = 2010.00f;
 
-
     public PersonFormV13(String nameFrame) {
         super(nameFrame);
     }
@@ -30,40 +29,34 @@ public class PersonFormV13 extends PersonFormV12 {
     public void actionPerformed(ActionEvent event) {
         Object src = event.getSource();
         if (src == okButton) {
-            
-            checkDecimalException(heightTxtField.getText(), " height", MAX_HEIGHT, MIN_HEIGHT);
+
+            System.out.println(checkDecimalException(heightTxtField.getText(), " height", MAX_HEIGHT, MIN_HEIGHT));
             checkDecimalException(weightTxtField.getText(), " weight", MAX_WEIGHT, MIN_WEIGHT);
             checkDateException(dobTxtField.getText());
-            
+
         }
-        
+
     }
 
-    protected boolean checkDecimalException(String volid, String string, double max, double min) {
-        String message="";
-        try {
-            double volidDouble = Double.parseDouble(volid);
-            if (volidDouble >= max || volidDouble <= min) {
-                message += "Valid values for" + string + "are [" + min + "," + max + "]\n";
-            }
+    protected String checkDecimalException(String volid, String string, double max, double min) {
+        double volidDouble = Double.parseDouble(volid);
+        if (volidDouble >= max || volidDouble <= min) {
+            return "Valid values for" + string + "are [" + min + "," + max + "]\n";
+        } else {
+            return "Please enter only numeric input for" + string + "\n";
 
-        } catch (NumberFormatException e) {
-            message += "Please enter only numeric input for" + string +"\n";
         }
-        return true;
-        
+
     }
 
-    protected void checkDateException(String date){
+    protected void checkDateException(String date) {
         try {
 
-
         } catch (NumberFormatException e) {
-            
+
         }
-        
+
     }
-    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
