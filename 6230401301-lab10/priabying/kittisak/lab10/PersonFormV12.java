@@ -8,8 +8,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import javax.swing.*;
 import javax.swing.SwingUtilities;
 
@@ -28,13 +26,27 @@ public class PersonFormV12 extends PersonFormV11 {
     protected void handleOkButton() {
         String info = getInfoFromForm();
         String person = addPerson();
-
         personList.add(person);
-        Person ll = new Person();
-        personMap.put(ll.getName(), person);
+        personMap.put(nameTxtField.getText(), person);
 
         JOptionPane.showMessageDialog(this, info + "\n\nAdding this person into the list:" + person,
                 "Person Information", JOptionPane.INFORMATION_MESSAGE);
+
+    }
+
+    protected void handleRemoveMI() {
+        String name = JOptionPane.showInputDialog("Please enter a person name to search:");
+        if (personMap.containsKey(name)) {
+            String person = personMap.get(name);
+            JOptionPane.showMessageDialog(this, personMap.get(name) + " is removed.", "Message",
+                    JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getClass().getResource("images/java.png")));
+            personList.remove(person);
+            personMap.remove(name);
+
+        } else {
+            JOptionPane.showMessageDialog(this, name + " is not found", "Message", JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon(getClass().getResource("images/java.png")));
+        }
 
     }
 
@@ -42,7 +54,6 @@ public class PersonFormV12 extends PersonFormV11 {
         double weight = Double.parseDouble(weightTxtField.getText());
         double height = Double.parseDouble(heightTxtField.getText());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
         LocalDate dob = LocalDate.parse(dobTxtField.getText(), formatter);
         Person person = new Person(nameTxtField.getText(), weight, height, dob);
         return person.toString();
@@ -77,16 +88,21 @@ public class PersonFormV12 extends PersonFormV11 {
         } else if (src == searchItem) {
             handleSearchMI();
 
+        } else if (src == removeItem) {
+            handleRemoveMI();
+
         }
     }
 
     protected void handleSearchMI() {
         String name = JOptionPane.showInputDialog("Please enter a person name to search:");
-
-
-
-        
-
+        if (personMap.containsKey(name)) {
+            JOptionPane.showMessageDialog(this, personMap.get(name), "Message", JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon(getClass().getResource("images/java.png")));
+        } else {
+            JOptionPane.showMessageDialog(this, name + " is not found", "Message", JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon(getClass().getResource("images/java.png")));
+        }
     }
 
     protected void handleSortMI() {
@@ -109,6 +125,7 @@ public class PersonFormV12 extends PersonFormV11 {
         displayItem.addActionListener(this);
         sortItem.addActionListener(this);
         searchItem.addActionListener(this);
+        removeItem.addActionListener(this);
     }
 
     @Override
