@@ -10,14 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import priabying.kittisak.lab8.PersonFormV10;
-
-/**
- * PersonFormV11
- */
 public class PersonFormV11 extends PersonFormV10 {
-    /**
-     *
-     */
+  
     private static final long serialVersionUID = 1L;
     protected JMenuItem customItem;
     protected JFileChooser openFile;

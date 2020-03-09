@@ -1,5 +1,6 @@
 package priabying.kittisak.lab10;
 
+import java.awt.Component;
 import java.awt.event.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -7,6 +8,7 @@ import java.util.InputMismatchException;
 import java.util.regex.Pattern;
 
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -25,27 +27,19 @@ public class PersonFormV13 extends PersonFormV12 {
         super(nameFrame);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent event) {
-        Object src = event.getSource();
-        if (src == okButton) {
+    protected boolean checkDecimalException(String valid, String string, double max, double min) {
+        try {
+            double validDouble = Double.parseDouble(valid);
+            if (validDouble >= max || validDouble <= min) {
+                JOptionPane.showMessageDialog(this, "Valid values for" + string + "are [" + min + "," + max + "]\n",
+                        "Message", JOptionPane.INFORMATION_MESSAGE);
+            }
 
-            System.out.println(checkDecimalException(heightTxtField.getText(), " height", MAX_HEIGHT, MIN_HEIGHT));
-            checkDecimalException(weightTxtField.getText(), " weight", MAX_WEIGHT, MIN_WEIGHT);
-            checkDateException(dobTxtField.getText());
-
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter only numeric input for" + string + "\n", "Message",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
-
-    }
-
-    protected String checkDecimalException(String volid, String string, double max, double min) {
-        double volidDouble = Double.parseDouble(volid);
-        if (volidDouble >= max || volidDouble <= min) {
-            return "Valid values for" + string + "are [" + min + "," + max + "]\n";
-        } else {
-            return "Please enter only numeric input for" + string + "\n";
-
-        }
+        return false;
 
     }
 

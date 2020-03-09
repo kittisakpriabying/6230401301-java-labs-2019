@@ -26,35 +26,25 @@ public class PersonFormV12 extends PersonFormV11 {
     protected void handleOkButton() {
         String info = getInfoFromForm();
         String person = addPerson();
+        // Add person to List.
         personList.add(person);
+        // Add key and value to personMap.
         personMap.put(nameTxtField.getText(), person);
-
+        // Show 
         JOptionPane.showMessageDialog(this, info + "\n\nAdding this person into the list:" + person,
                 "Person Information", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
-    protected void handleRemoveMI() {
-        String name = JOptionPane.showInputDialog("Please enter a person name to search:");
-        if (personMap.containsKey(name)) {
-            String person = personMap.get(name);
-            JOptionPane.showMessageDialog(this, personMap.get(name) + " is removed.", "Message",
-                    JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getClass().getResource("images/java.png")));
-            personList.remove(person);
-            personMap.remove(name);
-
-        } else {
-            JOptionPane.showMessageDialog(this, name + " is not found", "Message", JOptionPane.INFORMATION_MESSAGE,
-                    new ImageIcon(getClass().getResource("images/java.png")));
-        }
-
-    }
 
     protected String addPerson() {
+        // Convert String to double.
         double weight = Double.parseDouble(weightTxtField.getText());
         double height = Double.parseDouble(heightTxtField.getText());
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate dob = LocalDate.parse(dobTxtField.getText(), formatter);
+        // Create Person.
         Person person = new Person(nameTxtField.getText(), weight, height, dob);
         return person.toString();
     }
@@ -62,12 +52,14 @@ public class PersonFormV12 extends PersonFormV11 {
     @Override
     protected void addMenus() {
         super.addMenus();
+        // Create sub menu.
         this.dataMenu = new JMenu("Data");
         this.displayItem = new JMenuItem("Display");
         this.sortItem = new JMenuItem("Sort");
         this.searchItem = new JMenuItem("Search");
         this.removeItem = new JMenuItem("Remove");
 
+        // Add sub menu to menu.
         dataMenu.add(displayItem);
         dataMenu.add(sortItem);
         dataMenu.add(searchItem);
@@ -84,13 +76,10 @@ public class PersonFormV12 extends PersonFormV11 {
             handleDisplayMI();
         } else if (src == sortItem) {
             handleSortMI();
-
         } else if (src == searchItem) {
             handleSearchMI();
-
         } else if (src == removeItem) {
             handleRemoveMI();
-
         }
     }
 
@@ -117,10 +106,25 @@ public class PersonFormV12 extends PersonFormV11 {
                 new ImageIcon(getClass().getResource("images/java.png")));
 
     }
+    protected void handleRemoveMI() {
+        String name = JOptionPane.showInputDialog("Please enter a person name to remove:");
+        
+        if (personMap.containsKey(name)) {
+            String person = personMap.get(name);
+            JOptionPane.showMessageDialog(this, personMap.get(name) + " is removed.", "Message",
+                    JOptionPane.INFORMATION_MESSAGE, new ImageIcon(getClass().getResource("images/java.png")));
+            personList.remove(person);
+            personMap.remove(name);
+
+        } else {
+            JOptionPane.showMessageDialog(this, name + " is not found", "Message", JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon(getClass().getResource("images/java.png")));
+        }
+
+    }
 
     @Override
     protected void addListeners() {
-        // TODO Auto-generated method stub
         super.addListeners();
         displayItem.addActionListener(this);
         sortItem.addActionListener(this);
@@ -130,7 +134,7 @@ public class PersonFormV12 extends PersonFormV11 {
 
     @Override
     protected void addComponents() {
-        // TODO Auto-generated method stub
+        
         super.addComponents();
         this.personList = new ArrayList<String>();
         this.personMap = new HashMap<String, String>();
