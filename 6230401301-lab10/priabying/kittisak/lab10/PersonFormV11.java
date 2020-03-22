@@ -55,45 +55,60 @@ public class PersonFormV11 extends PersonFormV10 {
 
     }
 
+    protected void openHandle() {
+        // Show Open file.
+        int returnVal = openFile.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            String text = "Opening file " + openFile.getSelectedFile().getName();
+            JOptionPane.showMessageDialog(this, text, "Message", JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon(getClass().getResource("images/java.png")));
+            // Show openFile is cancel.
+        } else if (returnVal == JFileChooser.CANCEL_OPTION) {
+            String text = "Open command cancelled by user.";
+            JOptionPane.showMessageDialog(this, text, "Message", JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon(getClass().getResource("images/java.png")));
+        }
+
+    }
+
+    protected void saveHandle() {
+        int returnVal = saveFile.showSaveDialog(this);
+        // Show save file .
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            String text = "Saving file " + saveFile.getSelectedFile().getName();
+            JOptionPane.showMessageDialog(this, text, "Message", JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon(getClass().getResource("images/java.png")));
+            // Show save file is cancel.
+        } else if (returnVal == JFileChooser.CANCEL_OPTION) {
+            String text = "Saving command cancelled by user. ";
+            JOptionPane.showMessageDialog(this, text, "Message", JOptionPane.INFORMATION_MESSAGE,
+                    new ImageIcon(getClass().getResource("images/java.png")));
+
+        }
+    }
+
+    protected void customHandle() {
+        Color selectedColor = JColorChooser.showDialog(this, "Color Chooser", nameTxtField.getForeground());
+        if (selectedColor != null) {
+            changeColor(selectedColor);
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent event) {
         super.actionPerformed(event);
         Object obj = event.getActionCommand();
         // If custom is selected.
         if (obj == customItem.getActionCommand()) {
-            Color selectedColor = JColorChooser.showDialog(this, "Color Chooser", nameTxtField.getForeground());
-            if (selectedColor != null) {
-                changeColor(selectedColor);
-            }
+            customHandle();
+
             // If openMI is selected.
         } else if (obj == openMI.getActionCommand()) {
-            // Show Open file.
-            int returnVal = openFile.showOpenDialog(this);
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                String text = "Opening file " + openFile.getSelectedFile().getName();
-                JOptionPane.showMessageDialog(this, text, "Message", JOptionPane.INFORMATION_MESSAGE,
-                        new ImageIcon(getClass().getResource("images/java.png")));
-                // Show openFile is cancel.
-            } else if (returnVal == JFileChooser.CANCEL_OPTION) {
-                String text = "Open command cancelled by user.";
-                JOptionPane.showMessageDialog(this, text, "Message", JOptionPane.INFORMATION_MESSAGE,
-                        new ImageIcon(getClass().getResource("images/java.png")));
-            }
+            openHandle();
+
             // If saveMI selected.
         } else if (obj == saveMI.getActionCommand()) {
-            int returnVal = saveFile.showSaveDialog(this);
-            // Show save file .
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                String text = "Saving file " + saveFile.getSelectedFile().getName();
-                JOptionPane.showMessageDialog(this, text, "Message", JOptionPane.INFORMATION_MESSAGE,
-                        new ImageIcon(getClass().getResource("images/java.png")));
-                // Show save file is cancel.
-            } else if (returnVal == JFileChooser.CANCEL_OPTION) {
-                String text = "Saving command cancelled by user. ";
-                JOptionPane.showMessageDialog(this, text, "Message", JOptionPane.INFORMATION_MESSAGE,
-                        new ImageIcon(getClass().getResource("images/java.png")));
-
-            }
+            saveHandle();
 
         } else if (obj == exitMI.getActionCommand()) {
             // Exit program.

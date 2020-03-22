@@ -37,7 +37,7 @@ public class PersonFormV2 extends PersonFormV1 {
 	protected JPanel reviewPanel, contentPanel, typePanel;
 	protected JLabel reviewLabel, typeLabel;
 	protected JComboBox<String> typeBox;
-	protected String[] typesValues = {"Running", "Swimming", "Tennis"};
+	protected String[] typesValues = {"Running", "Swimming", "Tennis","dddddd","dddddd","ddssssss","lllllllll", "zzzzz"};
 	
 	public final static int NUM_TXTAREA_ROWS = 2;
 	public final static int NUM_TXTAREA_COLS = 35;

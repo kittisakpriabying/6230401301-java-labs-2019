@@ -85,13 +85,10 @@ public class PersonFormV12 extends PersonFormV11 {
             handleDisplayMI();
         } else if (src == sortItem) {
             handleSortMI();
-
         } else if (src == searchItem) {
             handleSearchMI();
-
         } else if (src == removeItem) {
             handleRemoveMI();
-
         }
     }
     protected void handleRemoveMI() {
